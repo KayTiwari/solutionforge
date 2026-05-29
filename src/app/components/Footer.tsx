@@ -1,4 +1,4 @@
-import LogoMark from "./LogoMark";
+import Image from "next/image";
 
 const links = {
   Services: ["AI Strategy", "SEO", "Growth Strategy", "AI Content", "Analytics"],
@@ -13,7 +13,9 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-3 mb-5">
-              <LogoMark size={34} />
+              <div className="relative w-9 h-9">
+                <Image src="/logo.png" alt="SolutionForge" fill className="object-contain" />
+              </div>
               <span className="text-lg font-bold">
                 <span className="text-white">Solution</span>
                 <span className="gradient-text">Forge</span>
