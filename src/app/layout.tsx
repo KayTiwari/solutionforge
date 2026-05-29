@@ -27,9 +27,6 @@ export const metadata: Metadata = {
     description:
       "Helping businesses grow through intelligent AI strategy, data-driven SEO, and measurable results.",
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
