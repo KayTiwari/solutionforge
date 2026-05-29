@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import LogoMark from "./LogoMark";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -30,15 +30,7 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10">
-            <Image
-              src="/logo.png"
-              alt="SolutionForge"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
+          <LogoMark size={38} />
           <span className="text-xl font-bold tracking-tight">
             <span className="text-white">Solution</span>
             <span className="gradient-text">Forge</span>

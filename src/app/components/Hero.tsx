@@ -1,4 +1,4 @@
-import Image from "next/image";
+import LogoMark from "./LogoMark";
 
 const pills = ["AI Strategy", "SEO", "Growth", "Results"];
 
@@ -96,14 +96,7 @@ export default function Hero() {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-blue/20 to-brand-cyan/20 blur-2xl" />
               <div className="relative gradient-border rounded-3xl p-1 glow-blue">
                 <div className="rounded-[11px] bg-navy-800 p-8 flex items-center justify-center h-full">
-                  <Image
-                    src="/logo.png"
-                    alt="SolutionForge Logo"
-                    width={280}
-                    height={280}
-                    className="object-contain drop-shadow-2xl"
-                    priority
-                  />
+                  <LogoMark size={180} />
                 </div>
               </div>
             </div>
