@@ -12,7 +12,8 @@ export default function Contact() {
             operating day would look like. That is enough for a useful first conversation.
           </p>
           <a className="button button-light" href={emailHref}>
-            Start the brief <span aria-hidden="true">↗</span>
+            <span className="button-label">Start the brief</span>
+            <span className="button-icon" aria-hidden="true">↗</span>
           </a>
           <a className="contact-email" href="mailto:hello@solutionforge.dev">hello@solutionforge.dev</a>
         </div>
