@@ -2,30 +2,35 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SolutionForge | AI • SEO • Strategy • Results",
+  metadataBase: new URL("https://solutionforge.dev"),
+  title: "SolutionForge | Practical AI systems for growth teams",
   description:
-    "SolutionForge is a tech and AI consulting firm helping businesses grow through intelligent AI strategy, data-driven SEO, and measurable results.",
+    "SolutionForge designs and implements AI workflows, technical SEO infrastructure, and measurement systems for teams replacing manual, disconnected work.",
   keywords: [
-    "AI consulting",
-    "SEO strategy",
-    "tech consulting",
-    "artificial intelligence",
-    "digital strategy",
+    "AI workflow consulting",
+    "AI automation",
+    "technical SEO",
+    "organic search operations",
+    "content operations",
+    "measurement systems",
     "SolutionForge",
   ],
   openGraph: {
-    title: "SolutionForge | AI • SEO • Strategy • Results",
+    title: "SolutionForge | Practical AI systems for growth teams",
     description:
-      "Helping businesses grow through intelligent AI strategy, data-driven SEO, and measurable results.",
+      "AI workflows, SEO and content operations, and decision systems designed around real operations.",
     type: "website",
-    url: "https://solutionforge.dev",
+    url: "/",
     siteName: "SolutionForge",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "SolutionForge | AI • SEO • Strategy • Results",
+    card: "summary",
+    title: "SolutionForge | Practical AI systems for growth teams",
     description:
-      "Helping businesses grow through intelligent AI strategy, data-driven SEO, and measurable results.",
+      "AI workflows, SEO and content operations, and decision systems designed around real operations.",
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
@@ -35,8 +40,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="antialiased">{children}</body>
+    <html lang="en">
+      <body>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }
