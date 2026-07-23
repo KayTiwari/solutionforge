@@ -1,15 +1,16 @@
-const emailHref = "mailto:hello@solutionforge.dev?subject=SolutionForge%20project%20brief&body=Bottleneck%3A%0A%0ACurrent%20tools%3A%0A%0AWhat%20better%20looks%20like%3A%0A";
+const emailHref = "mailto:hello@solutionforge.dev?subject=SolutionForge%20project%20brief&body=Project%20type%20%28website%2C%20outreach%2C%20or%20automation%29%3A%0A%0ACurrent%20situation%3A%0A%0AWhat%20better%20looks%20like%3A%0A";
 
 export default function Contact() {
   return (
     <section id="contact" className="section contact-section">
       <div className="shell contact-layout">
         <div className="contact-copy">
-          <p className="section-label section-label-light">Start / 04</p>
-          <h2>Bring us one expensive bottleneck.</h2>
+          <p className="section-label section-label-light">Start / 05</p>
+          <h2>Tell us what needs to work better.</h2>
           <p>
-            Start with the work that repeats, the place it breaks, and what a better
-            operating day would look like. That is enough for a useful first conversation.
+            Tell us whether you need a website, outreach support, or a better
+            workflow—and what is getting in the way today. That is enough for a
+            useful first conversation.
           </p>
           <a className="button button-light" href={emailHref}>
             <span className="button-label">Start the brief</span>
@@ -26,15 +27,15 @@ export default function Contact() {
           <ol>
             <li>
               <span>01</span>
-              <div><h3>The bottleneck</h3><p>What repeats, stalls, or consumes expert attention?</p></div>
+              <div><h3>The project</h3><p>What do you need to build, launch, or improve?</p></div>
             </li>
             <li>
               <span>02</span>
-              <div><h3>The operating context</h3><p>Which people, tools, data, and constraints shape the work?</p></div>
+              <div><h3>The context</h3><p>Who is it for, what exists today, and which constraints matter?</p></div>
             </li>
             <li>
               <span>03</span>
-              <div><h3>The useful outcome</h3><p>What observable change would make the system worth building?</p></div>
+              <div><h3>The useful outcome</h3><p>What observable change would make the project worth doing?</p></div>
             </li>
           </ol>
           <p className="brief-note">No polished requirements document needed.</p>

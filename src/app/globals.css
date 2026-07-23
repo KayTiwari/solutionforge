@@ -64,6 +64,7 @@ select {
 }
 
 .approach-section :focus-visible,
+.growth-offer-outreach :focus-visible,
 .site-footer :focus-visible {
   outline-color: var(--signal);
 }
@@ -551,17 +552,6 @@ select {
   color: var(--white);
 }
 
-.hero::before {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  left: max(1.5rem, calc((100vw - 1240px) / 2));
-  width: 1px;
-  background: rgba(255, 253, 248, 0.16);
-  content: "";
-}
-
 .hero-media,
 .hero-shade {
   position: absolute;
@@ -636,6 +626,49 @@ select {
   font-weight: 600;
   letter-spacing: -0.068em;
   line-height: 0.92;
+}
+
+.hero-hot-word {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  color: #ff7655;
+  text-shadow: 0 0 1.4rem rgba(255, 90, 54, 0.28);
+}
+
+.hero-hot-word::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0.08em -0.08em 0.01em -0.06em;
+  background: rgba(255, 90, 54, 0.11);
+  clip-path: polygon(4% 10%, 100% 0, 96% 90%, 0 100%);
+  content: "";
+  transform: rotate(-1.5deg);
+}
+
+.hero-word-ember {
+  position: absolute;
+  top: 0.02em;
+  right: -0.12em;
+  width: 0.105em;
+  height: 0.105em;
+  background: var(--signal);
+  box-shadow: 0 0 0.18em rgba(188, 236, 117, 0.5);
+  animation: hero-ember-lift 2.8s ease-out infinite;
+}
+
+@keyframes hero-ember-lift {
+  0%, 54%, 100% {
+    opacity: 0;
+    transform: translate(0, 0.22em) scale(0.55) rotate(0deg);
+  }
+  64% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 0;
+    transform: translate(0.2em, -0.42em) scale(0.95) rotate(90deg);
+  }
 }
 
 .hero-lede {
@@ -836,6 +869,160 @@ select {
 .fit-note > p:nth-child(2) {
   margin: 0;
   font-size: 0.92rem;
+}
+
+/* Website + outreach */
+
+.growth-section {
+  background: var(--white);
+}
+
+.growth-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 1px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+}
+
+.growth-offer {
+  --offer-background: var(--paper);
+  --offer-ink: var(--ink);
+  --offer-muted: var(--ink-soft);
+  --offer-line: var(--line);
+  --offer-signal: var(--accent-dark);
+  display: flex;
+  min-width: 0;
+  padding: clamp(2.25rem, 4.5vw, 4rem);
+  background: var(--offer-background);
+  color: var(--offer-ink);
+  flex-direction: column;
+}
+
+.growth-offer-outreach {
+  --offer-background: var(--dark-panel);
+  --offer-ink: var(--white);
+  --offer-muted: #aeb8b4;
+  --offer-line: var(--line-dark);
+  --offer-signal: var(--signal);
+}
+
+.growth-offer-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: baseline;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--offer-line);
+}
+
+.growth-offer-topline .mono-label {
+  color: var(--offer-signal);
+}
+
+.growth-offer-topline > p:last-child {
+  margin: 0;
+  color: var(--offer-muted);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.growth-offer h3 {
+  max-width: 11ch;
+  margin: 2.75rem 0 1.5rem;
+  font-size: clamp(2.5rem, 4.5vw, 4.35rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.growth-offer-use,
+.growth-offer-description {
+  margin: 0;
+  color: var(--offer-muted);
+  line-height: 1.65;
+}
+
+.growth-offer-use {
+  max-width: 48ch;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+  font-size: 0.88rem;
+}
+
+.growth-path {
+  margin: 3rem 0 2rem;
+}
+
+.growth-path > .mono-label,
+.growth-deliverables > .mono-label {
+  margin-bottom: 1rem;
+  color: var(--offer-signal);
+}
+
+.growth-path ol {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--offer-line);
+  list-style: none;
+}
+
+.growth-path li {
+  min-width: 0;
+  padding: 1rem 0.85rem;
+  border-right: 1px solid var(--offer-line);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.growth-path li:last-child {
+  border-right: 0;
+}
+
+.growth-path li span {
+  display: block;
+  margin-bottom: 1.75rem;
+  color: var(--offer-signal);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+}
+
+.growth-offer-description {
+  max-width: 58ch;
+  font-size: 0.96rem;
+}
+
+.growth-deliverables {
+  margin-top: auto;
+  padding-top: 3rem;
+}
+
+.growth-deliverables ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.growth-deliverables li {
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--offer-line);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.025em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.growth-offer .text-link {
+  margin-top: 2.75rem;
 }
 
 /* Method */
@@ -1144,9 +1331,9 @@ select {
   overflow: hidden;
   background-color: var(--accent);
   background-image:
-    linear-gradient(90deg, rgba(255, 90, 54, 0.96) 0%, rgba(255, 90, 54, 0.88) 46%, rgba(17, 26, 24, 0.48) 100%),
+    linear-gradient(90deg, rgba(7, 12, 11, 0.76) 0%, rgba(7, 12, 11, 0.5) 38%, rgba(255, 90, 54, 0.84) 64%, rgba(255, 90, 54, 0.98) 100%),
     url("/images/blacksmith-forge-hero-faceless.jpg");
-  background-position: center center;
+  background-position: left center;
   background-size: cover;
   color: var(--ink);
 }
@@ -1171,15 +1358,16 @@ select {
 }
 
 .contact-copy .section-label {
-  color: var(--ink);
+  color: var(--signal);
 }
 
 .contact-copy h2 {
   margin-top: 2rem;
+  color: var(--white);
 }
 
 .contact-copy > p {
-  color: rgba(18, 24, 23, 0.78);
+  color: rgba(255, 253, 248, 0.76);
 }
 
 .contact-copy .button {
@@ -1193,6 +1381,7 @@ select {
   margin-top: 1.25rem;
   border-bottom: 0;
   padding-bottom: 0.25rem;
+  color: var(--white);
   background-image: repeating-linear-gradient(90deg, currentColor 0 0.2rem, transparent 0.2rem 0.4rem);
   background-repeat: repeat-x;
   background-position: left bottom;
@@ -1210,7 +1399,7 @@ select {
   bottom: -0.1rem;
   width: 0.35rem;
   height: 0.35rem;
-  background: var(--ink);
+  background: var(--signal);
   content: "";
   transform: scale(0) rotate(0);
   transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1223,6 +1412,10 @@ select {
 
 .contact-email:focus-visible::after {
   transform: scale(1) rotate(225deg);
+}
+
+.contact-copy :focus-visible {
+  outline-color: var(--signal);
 }
 
 .brief-panel {
@@ -1532,6 +1725,10 @@ select {
     gap: 2rem;
   }
 
+  .growth-offer h3 {
+    font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+  }
+
   .blueprint-grid {
     grid-template-columns: 1fr;
   }
@@ -1704,9 +1901,24 @@ select {
     grid-row: 2;
   }
 
+  .growth-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .growth-offer h3 {
+    max-width: 13ch;
+  }
+
   .approach-layout,
   .contact-layout {
     grid-template-columns: 1fr;
+  }
+
+  .contact-section {
+    background-image:
+      linear-gradient(180deg, rgba(7, 12, 11, 0.86) 0%, rgba(7, 12, 11, 0.7) 42%, rgba(255, 90, 54, 0.9) 70%, rgba(255, 90, 54, 0.98) 100%),
+      url("/images/blacksmith-forge-hero-faceless.jpg");
+    background-position: 64% center;
   }
 
   .approach-thesis {
@@ -1855,6 +2067,38 @@ select {
     padding: 1.5rem;
   }
 
+  .growth-offer {
+    padding: 2rem 1.5rem 2.25rem;
+  }
+
+  .growth-offer-topline {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .growth-offer-topline > p:last-child {
+    text-align: left;
+  }
+
+  .growth-offer h3 {
+    margin-top: 2.25rem;
+    font-size: clamp(2.35rem, 12vw, 3.35rem);
+  }
+
+  .growth-path ol,
+  .growth-deliverables ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .growth-path li:nth-child(2) {
+    border-right: 0;
+  }
+
+  .growth-path li:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--offer-line);
+  }
+
   .phase-list li {
     grid-template-columns: 1.8rem 1fr;
   }
@@ -1955,6 +2199,7 @@ select {
   }
 
   .eyebrow span,
+  .hero-word-ember,
   .confidence-layout li::before {
     animation: none !important;
   }

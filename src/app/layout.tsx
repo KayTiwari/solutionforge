@@ -3,10 +3,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://solutionforge.dev"),
-  title: "SolutionForge | Practical AI systems for growth teams",
+  title: "SolutionForge | Websites, outreach & AI systems",
   description:
-    "SolutionForge designs and implements AI workflows, technical SEO infrastructure, and measurement systems for teams replacing manual, disconnected work.",
+    "SolutionForge builds business websites, creates thoughtful outreach systems, and automates recurring work for growth and operations teams.",
   keywords: [
+    "business website design",
+    "website development",
+    "business outreach",
+    "prospect outreach",
     "AI workflow consulting",
     "AI automation",
     "technical SEO",
@@ -16,18 +20,18 @@ export const metadata: Metadata = {
     "SolutionForge",
   ],
   openGraph: {
-    title: "SolutionForge | Practical AI systems for growth teams",
+    title: "SolutionForge | Websites, outreach & AI systems",
     description:
-      "AI workflows, SEO and content operations, and decision systems designed around real operations.",
+      "Business websites, thoughtful outreach systems, and practical automation designed around real operations.",
     type: "website",
     url: "/",
     siteName: "SolutionForge",
   },
   twitter: {
     card: "summary",
-    title: "SolutionForge | Practical AI systems for growth teams",
+    title: "SolutionForge | Websites, outreach & AI systems",
     description:
-      "AI workflows, SEO and content operations, and decision systems designed around real operations.",
+      "Business websites, thoughtful outreach systems, and practical automation designed around real operations.",
   },
   alternates: {
     canonical: "/",

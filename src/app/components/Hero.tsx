@@ -21,23 +21,26 @@ export default function Hero() {
 
         <div className="shell hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow"><span /> AI workflows · SEO operations · Reporting</p>
-            <h1>Build and Automate your workflows.</h1>
+            <p className="eyebrow"><span /> Websites · Outreach · Workflow automation</p>
+            <h1>
+              We <span className="hero-hot-word">build<span className="hero-word-ember" aria-hidden="true" /></span>{" "}
+              websites and outreach systems.
+            </h1>
             <p className="hero-lede">
-              We help growth and operations teams automate research, reporting,
-              and publishing—while keeping the tools, approvals, and judgment
-              they already trust.
+              SolutionForge helps businesses show up clearly, reach prospects
+              thoughtfully, and automate recurring research, reporting, and
+              publishing—while keeping people in control.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#contact">
-                <span className="button-label">Show us the busywork</span>
+                <span className="button-label">Discuss a project</span>
                 <span className="button-icon" aria-hidden="true">↗</span>
               </a>
               <SlowScrollLink className="text-link text-link-down" href="#services">
                 See what we build <span className="link-icon" aria-hidden="true">↓</span>
               </SlowScrollLink>
             </div>
-            <p className="hero-note">Start with one workflow. Prove it with real inputs. Expand only when it earns the right.</p>
+            <p className="hero-note">Start with one useful project. Put it in real hands. Expand only when it earns the right.</p>
           </div>
         </div>
       </section>
@@ -46,9 +49,9 @@ export default function Hero() {
         <div className="shell confidence-layout">
           <p>Good places to start</p>
           <ul>
-            <li>Research &amp; reporting</li>
-            <li>SEO &amp; publishing</li>
-            <li>Measurement &amp; alerts</li>
+            <li>Business websites</li>
+            <li>Thoughtful outreach</li>
+            <li>Practical automation</li>
           </ul>
         </div>
       </div>

@@ -60,7 +60,7 @@ export default function Services() {
 
         <div className="fit-note">
           <p className="mono-label">A GOOD FIRST PROJECT</p>
-          <p>One workflow with a clear owner, visible friction, and an outcome the team can verify.</p>
+          <p>One site, outreach motion, or workflow with a clear owner and an outcome the team can verify.</p>
           <a className="text-link" href="#contact">Describe yours <span className="link-icon" aria-hidden="true">↗</span></a>
         </div>
       </div>

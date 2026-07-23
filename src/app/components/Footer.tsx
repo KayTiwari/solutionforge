@@ -2,6 +2,7 @@ import LogoMark from "./LogoMark";
 
 const footerLinks = [
   { label: "Expertise", href: "#services" },
+  { label: "Web + outreach", href: "#growth" },
   { label: "Method", href: "#approach" },
   { label: "Delivery", href: "#work" },
   { label: "Contact", href: "#contact" },

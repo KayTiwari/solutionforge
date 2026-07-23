@@ -1,13 +1,13 @@
 const workflow = [
-  { title: "Intake", detail: "Structured context enters once" },
-  { title: "Triage", detail: "Rules route the normal and exceptional" },
-  { title: "Assist", detail: "The model works inside a defined scope" },
-  { title: "Review", detail: "A person owns consequential decisions" },
+  { title: "Intake", detail: "Goals, audience, and constraints enter once" },
+  { title: "Shape", detail: "The plan and success criteria become explicit" },
+  { title: "Build", detail: "The site, outreach, or workflow takes working form" },
+  { title: "Review", detail: "Your team checks consequential decisions" },
   { title: "Measure", detail: "The result is compared with baseline" },
 ];
 
 const definitionOfDone = [
-  ["Useful", "The workflow removes real effort or delay."],
+  ["Useful", "The work removes friction or enables a clear action."],
   ["Observable", "Quality, cost, and exceptions can be inspected."],
   ["Governed", "Owners and approval boundaries are explicit."],
   ["Transferable", "Your team can operate it without guesswork."],
@@ -18,12 +18,13 @@ export default function Delivery() {
     <section id="work" className="section work-section">
       <div className="shell">
         <div className="section-intro work-intro">
-          <p className="section-label">Delivery / 03</p>
+          <p className="section-label">Delivery / 04</p>
           <div>
             <h2>See what gets built before you buy a promise.</h2>
             <p>
-              A credible engagement starts with an inspectable operating path and a
-              clear definition of done. This blueprint shows both without presenting
+              A credible engagement starts with an inspectable path and a clear
+              definition of done. This blueprint shows how a website, outreach
+              motion, or workflow moves from brief to owned result—without presenting
               an illustrative scenario as client proof.
             </p>
           </div>
@@ -34,7 +35,7 @@ export default function Delivery() {
             <div className="blueprint-header">
               <div>
                 <p className="mono-label">ILLUSTRATIVE DELIVERY BLUEPRINT</p>
-                <h3>A controlled path from request to result.</h3>
+                <h3>A controlled path from brief to owned result.</h3>
               </div>
               <span>Example workflow</span>
             </div>

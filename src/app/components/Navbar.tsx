@@ -5,6 +5,7 @@ import LogoMark from "./LogoMark";
 
 const navLinks = [
   { label: "Expertise", href: "#services" },
+  { label: "Web + outreach", href: "#growth" },
   { label: "Method", href: "#approach" },
   { label: "Delivery", href: "#work" },
 ];
@@ -42,7 +43,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a className="nav-cta" href="#contact">Discuss a system <span className="link-icon" aria-hidden="true">↗</span></a>
+        <a className="nav-cta" href="#contact">Discuss a project <span className="link-icon" aria-hidden="true">↗</span></a>
 
         <button
           className="menu-button"
@@ -68,7 +69,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</a>
           ))}
-          <a href="#contact" onClick={() => setMenuOpen(false)}>Discuss a system <span className="link-icon" aria-hidden="true">↗</span></a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Discuss a project <span className="link-icon" aria-hidden="true">↗</span></a>
         </div>
       </nav>
     </header>

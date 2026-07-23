@@ -2,26 +2,26 @@ const phases = [
   {
     number: "01",
     title: "Frame the work",
-    description: "Observe the current process, its owners, exceptions, inputs, and cost of delay.",
-    artifact: "System brief",
+    description: "Clarify the audience, desired action, current process, constraints, and cost of delay.",
+    artifact: "Project brief",
   },
   {
     number: "02",
     title: "Prove the path",
-    description: "Test the riskiest assumption with real inputs before committing to a larger build.",
+    description: "Test the riskiest assumption with real content, prospects, or inputs before committing to a larger build.",
     artifact: "Working proof",
   },
   {
     number: "03",
-    title: "Build the system",
-    description: "Connect tools, rules, models, and review points into a usable, governed workflow.",
+    title: "Build the solution",
+    description: "Design and implement the site, outreach motion, or workflow with clear review points and ownership.",
     artifact: "Implementation + handoff",
   },
   {
     number: "04",
     title: "Transfer control",
-    description: "Instrument the result, document exceptions, and give the operating team ownership.",
-    artifact: "Runbook + baseline",
+    description: "Instrument the result, document how it runs, and give the operating team ownership.",
+    artifact: "Documentation + baseline",
   },
 ];
 
@@ -30,21 +30,21 @@ export default function Method() {
     <section id="approach" className="section approach-section">
       <div className="shell approach-layout">
         <div className="approach-thesis">
-          <p className="section-label section-label-light">Method / 02</p>
-          <h2>Good automation starts with operational clarity.</h2>
+          <p className="section-label section-label-light">Method / 03</p>
+          <h2>Good delivery starts with a clear business problem.</h2>
           <p>
-            A prototype can impress in a day. A dependable system has to survive
-            edge cases, ownership changes, and real customer data. The method is
-            built around that difference.
+            A polished page, a long prospect list, or an AI demo is not enough.
+            The work has to fit your audience, your team, and the way decisions
+            get made. The method is built around that standard.
           </p>
 
           <div className="method-standard">
             <span className="mono-label">THE STANDARD</span>
             <ul>
-              <li>Start with the decision, not the tool</li>
+              <li>Start with the business action, not the tool</li>
               <li>Keep humans at consequential checkpoints</li>
               <li>Measure against the current baseline</li>
-              <li>Design the handoff before deployment</li>
+              <li>Design the handoff before launch</li>
             </ul>
           </div>
         </div>
