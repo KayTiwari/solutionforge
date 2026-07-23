@@ -22,7 +22,7 @@ const offers = [
     className: "growth-offer-outreach",
     label: "Outreach / 02",
     category: "Audience · Message · Follow-up",
-    title: "Outreach your team can actually run.",
+    title: "Outreach your team can run.",
     useWhen:
       "For businesses with a strong offer but no consistent way to identify good-fit prospects, start conversations, and follow up.",
     description:

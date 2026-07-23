@@ -24,6 +24,18 @@
   box-sizing: border-box;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 html {
   background: var(--paper);
   scroll-padding-top: 5rem;
@@ -646,6 +658,65 @@ select {
   transform: rotate(-1.5deg);
 }
 
+.hero-flame-i {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-i-flame {
+  position: absolute;
+  top: 0.025em;
+  left: 54%;
+  width: 0.2em;
+  height: 0.245em;
+  background: currentColor;
+  border-radius: 58% 42% 64% 36% / 72% 52% 48% 28%;
+  box-shadow: 0 0 0.16em rgba(255, 90, 54, 0.42);
+  clip-path: polygon(52% 0, 78% 27%, 100% 61%, 84% 100%, 17% 100%, 0 62%, 23% 31%);
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+  animation: hero-i-flame-dance 1.35s ease-in-out infinite;
+}
+
+.hero-i-flame::after {
+  position: absolute;
+  right: 30%;
+  bottom: 8%;
+  left: 30%;
+  height: 48%;
+  background: #ffb15f;
+  border-radius: 55% 45% 60% 40% / 75% 60% 40% 25%;
+  clip-path: polygon(55% 0, 90% 48%, 78% 100%, 18% 100%, 0 54%, 28% 24%);
+  content: "";
+  animation: hero-i-flame-core 0.92s ease-in-out infinite alternate;
+}
+
+@keyframes hero-i-flame-dance {
+  0%, 100% {
+    transform: translateX(-50%) skewX(-3deg) scale(0.94, 1.03);
+  }
+  28% {
+    transform: translateX(-53%) skewX(5deg) scale(1.04, 0.94);
+  }
+  58% {
+    transform: translateX(-47%) skewX(-6deg) scale(0.91, 1.08);
+  }
+  78% {
+    transform: translateX(-51%) skewX(2deg) scale(1.02, 0.97);
+  }
+}
+
+@keyframes hero-i-flame-core {
+  from {
+    opacity: 0.72;
+    transform: scale(0.82, 0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1, 1.08);
+  }
+}
+
 .hero-word-embers {
   position: absolute;
   z-index: 2;
@@ -816,7 +887,7 @@ select {
 
 .confidence-layout {
   display: grid;
-  grid-template-columns: 0.9fr 2.1fr;
+  grid-template-columns: minmax(max-content, 0.9fr) minmax(0, 2.1fr);
   gap: 3rem;
   align-items: center;
   min-height: 5.5rem;
@@ -829,23 +900,46 @@ select {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.confidence-layout ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+.confidence-ticker {
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+}
+
+.confidence-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: confidence-ticker-scroll 34s linear infinite;
+  will-change: transform;
+}
+
+.confidence-ticker:hover .confidence-ticker-track,
+.confidence-ticker:focus .confidence-ticker-track,
+.confidence-ticker:focus-within .confidence-ticker-track {
+  animation-play-state: paused;
+}
+
+.confidence-ticker-group {
+  display: flex;
+  flex: none;
+  gap: 3rem;
   margin: 0;
-  padding: 0;
+  padding: 0 3rem 0 0;
   list-style: none;
 }
 
-.confidence-layout li {
+.confidence-ticker li {
+  flex: none;
   color: var(--ink-soft);
   font-size: 0.75rem;
+  white-space: nowrap;
 }
 
-.confidence-layout li::before {
+.confidence-ticker li::before {
   display: inline-block;
   width: 0.32rem;
   height: 0.32rem;
@@ -856,9 +950,15 @@ select {
 }
 
 .eyebrow span,
-.confidence-layout li::before {
+.confidence-ticker li::before {
   animation: ember-pulse 2.8s ease-in-out infinite;
   transform-origin: center;
+}
+
+@keyframes confidence-ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Expertise */
@@ -1423,7 +1523,7 @@ select {
   overflow: hidden;
   background-color: var(--accent);
   background-image:
-    linear-gradient(270deg, rgba(255, 90, 54, 0.96) 0%, rgba(255, 90, 54, 0.88) 46%, rgba(17, 26, 24, 0.48) 100%),
+    linear-gradient(270deg, var(--accent) 0%, var(--accent) 30%, rgba(255, 90, 54, 0.94) 48%, rgba(17, 26, 24, 0.48) 100%),
     url("/images/blacksmith-forge-hero-faceless.jpg");
   background-position:
     center,
@@ -1808,6 +1908,168 @@ select {
   }
 }
 
+/* Scroll-driven scenes: progressive enhancement */
+
+@keyframes growth-path-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes growth-stage-assemble {
+  from {
+    opacity: 0.12;
+    clip-path: inset(0 100% 0 0);
+    translate: 0 0.75rem;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+  }
+}
+
+@keyframes method-phase-resolve {
+  from {
+    opacity: 0.38;
+    clip-path: inset(0 0 0 8%);
+    translate: 1.25rem 0;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+  }
+}
+
+@keyframes workflow-assemble {
+  from {
+    opacity: 0.08;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+}
+
+@supports (overflow: clip) {
+  @media (min-width: 1021px) and (min-height: 720px) {
+    .approach-section {
+      overflow: clip;
+    }
+
+    .approach-layout {
+      min-height: max(64rem, calc(100svh + 10rem));
+    }
+
+    .approach-thesis {
+      position: sticky;
+      top: 6.75rem;
+    }
+
+    .phase-list {
+      display: grid;
+      grid-template-rows: repeat(4, minmax(0, 1fr));
+    }
+
+    .phase-list li {
+      align-content: center;
+    }
+  }
+}
+
+@supports (animation-timeline: view()) and (animation-range: entry 0% cover 100%) {
+  @media (min-width: 561px) and (prefers-reduced-motion: no-preference) {
+    .growth-path {
+      view-timeline-name: --growth-path;
+      view-timeline-axis: block;
+    }
+
+    .growth-path ol {
+      position: relative;
+    }
+
+    .growth-path ol::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--offer-signal);
+      content: "";
+      transform-origin: left;
+      animation: growth-path-draw 1ms linear both;
+      animation-timeline: --growth-path;
+      animation-range: entry 20% cover 52%;
+    }
+
+    .growth-path li {
+      animation: growth-stage-assemble 1ms linear both;
+      animation-timeline: --growth-path;
+    }
+
+    .growth-path li:nth-child(1) {
+      animation-range: entry 18% cover 28%;
+    }
+
+    .growth-path li:nth-child(2) {
+      animation-range: entry 25% cover 35%;
+    }
+
+    .growth-path li:nth-child(3) {
+      animation-range: entry 32% cover 42%;
+    }
+
+    .growth-path li:nth-child(4) {
+      animation-range: entry 39% cover 49%;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .phase-list > li {
+      animation: method-phase-resolve 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 15% cover 35%;
+    }
+  }
+
+  @media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+    .blueprint {
+      view-timeline-name: --delivery-build;
+      view-timeline-axis: block;
+    }
+
+    .workflow li {
+      animation: workflow-assemble 1ms linear both;
+      animation-timeline: --delivery-build;
+    }
+
+    .workflow li:nth-child(1) {
+      animation-range: entry 10% cover 22%;
+    }
+
+    .workflow li:nth-child(2) {
+      animation-range: entry 18% cover 30%;
+    }
+
+    .workflow li:nth-child(3) {
+      animation-range: entry 26% cover 38%;
+    }
+
+    .workflow li:nth-child(4) {
+      animation-range: entry 34% cover 46%;
+    }
+
+    .workflow li:nth-child(5) {
+      animation-range: entry 42% cover 54%;
+    }
+  }
+}
+
 /* Responsive */
 
 @media (max-width: 1020px) {
@@ -1967,8 +2229,8 @@ select {
   }
 
   .confidence-layout {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 1.5rem;
     padding: 1.4rem 0;
   }
 
@@ -2142,9 +2404,8 @@ select {
     flex-direction: column;
   }
 
-  .confidence-layout ul {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
+  .confidence-ticker {
+    margin-inline: -0.25rem;
   }
 
   .service-row {
@@ -2295,9 +2556,36 @@ select {
   }
 
   .eyebrow span,
+  .hero-i-flame,
+  .hero-i-flame::after,
   .hero-word-ember,
-  .confidence-layout li::before {
+  .confidence-ticker li::before {
     animation: none !important;
+  }
+
+  .confidence-ticker {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .confidence-ticker-track {
+    animation: none !important;
+  }
+
+  .confidence-ticker-group[aria-hidden="true"] {
+    display: none;
+  }
+
+  .growth-path ol::after,
+  .growth-path li,
+  .phase-list > li,
+  .workflow li {
+    opacity: 1 !important;
+    clip-path: none !important;
+    translate: none !important;
+    animation: none !important;
+    animation-timeline: none !important;
   }
 
   .button-icon,

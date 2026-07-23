@@ -39,7 +39,7 @@ export default function Delivery() {
               </div>
               <span>Example workflow</span>
             </div>
-            <ol className="workflow">
+            <ol className="workflow" aria-label="Delivery workflow from intake to measurement">
               {workflow.map((step, index) => (
                 <li key={step.title}>
                   <span>{String(index + 1).padStart(2, "0")}</span>

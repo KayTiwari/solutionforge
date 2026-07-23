@@ -8,7 +8,7 @@ const phases = [
   {
     number: "02",
     title: "Prove the path",
-    description: "Test the riskiest assumption with real content, prospects, or inputs before committing to a larger build.",
+    description: "Test the riskiest assumption with live content, prospects, or inputs before committing to a larger build.",
     artifact: "Working proof",
   },
   {

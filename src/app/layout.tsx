@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SolutionForge | Websites, outreach & AI systems",
     description:
-      "Business websites, thoughtful outreach systems, and practical automation designed around real operations.",
+      "Business websites, thoughtful outreach systems, and practical automation designed around day-to-day operations.",
     type: "website",
     url: "/",
     siteName: "SolutionForge",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "SolutionForge | Websites, outreach & AI systems",
     description:
-      "Business websites, thoughtful outreach systems, and practical automation designed around real operations.",
+      "Business websites, thoughtful outreach systems, and practical automation designed around day-to-day operations.",
   },
   alternates: {
     canonical: "/",
