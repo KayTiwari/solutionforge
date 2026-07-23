@@ -26,7 +26,7 @@ export default function Delivery() {
             <p>
               A credible engagement starts with an inspectable path and a clear
               definition of done. This blueprint shows how a website, outreach
-              motion, or workflow moves from brief to owned result—without presenting
+              motion, or workflow moves from brief to owned result without presenting
               an illustrative scenario as client proof.
             </p>
           </div>

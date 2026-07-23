@@ -55,7 +55,7 @@ export default function Hero() {
               <p className="hero-lede">
                 SolutionForge helps businesses show up clearly, reach prospects
                 thoughtfully, and automate recurring research, reporting, and
-                publishing—while keeping people in control.
+                publishing while keeping people in control.
               </p>
               <div className="hero-actions">
                 <SlowScrollLink className="button button-primary" href="#contact">

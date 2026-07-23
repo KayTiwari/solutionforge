@@ -6,7 +6,7 @@ const services = [
     title: "AI workflow systems",
     useWhen: "Use when high-value work is trapped in repeatable research, routing, drafting, QA, or reporting.",
     description:
-      "We map the decision path, identify where automation is safe, and build the workflow around your team—not around a model demo.",
+      "We map the decision path, identify where automation is safe, and build the workflow around your team, not around a model demo.",
     deliverables: ["Workflow architecture", "Model + tool integration", "Review controls", "Operating runbook"],
   },
   {

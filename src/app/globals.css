@@ -1311,7 +1311,7 @@ select {
 .method-standard li::before {
   margin-right: 0.75rem;
   color: var(--accent);
-  content: "—";
+  content: "+";
 }
 
 .phase-list {
@@ -3079,9 +3079,14 @@ select {
   }
 
   .hero-shade {
-    background:
-      linear-gradient(90deg, rgba(7, 12, 11, 0.94) 0%, rgba(7, 12, 11, 0.76) 100%),
-      linear-gradient(0deg, rgba(7, 12, 11, 0.76) 0%, rgba(7, 12, 11, 0.08) 56%, rgba(7, 12, 11, 0.28) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(7, 12, 11, 0.38) 0%,
+      rgba(7, 12, 11, 0.16) 18%,
+      rgba(7, 12, 11, 0.3) 44%,
+      rgba(7, 12, 11, 0.48) 68%,
+      rgba(7, 12, 11, 0.62) 100%
+    );
   }
 
   .eyebrow {

@@ -11,7 +11,7 @@ export default function Contact() {
           <KineticHeading>Tell us what needs to work better.</KineticHeading>
           <p>
             Tell us whether you need a website, outreach support, or a better
-            workflow—and what is getting in the way today. That is enough for a
+            workflow. Tell us what is getting in the way today. That is enough for a
             useful first conversation.
           </p>
           <a className="button button-light" href={emailHref}>
