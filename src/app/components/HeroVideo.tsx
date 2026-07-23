@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const motionQuery = "(min-width: 1181px) and (prefers-reduced-motion: no-preference)";
+const motionQuery = "(prefers-reduced-motion: no-preference)";
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -45,7 +45,7 @@ export default function HeroVideo() {
       muted
       loop
       playsInline
-      preload="none"
+      preload="auto"
       poster="/images/blacksmith-forge-hero-faceless.jpg"
       aria-hidden="true"
     />

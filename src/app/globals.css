@@ -578,51 +578,13 @@ select {
   object-position: center center;
 }
 
-.hero-motion {
-  position: absolute;
-  z-index: 3;
-  right: max(1.5rem, calc((100vw - 1240px) / 2));
-  bottom: 4.5rem;
-  width: clamp(22rem, 30vw, 30rem);
-  overflow: hidden;
-  border: 1px solid rgba(255, 253, 248, 0.5);
-  background: #080d0c;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.38);
-}
-
-.hero-motion-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 2.35rem;
-  padding: 0.55rem 0.75rem;
-  border-bottom: 1px solid rgba(255, 253, 248, 0.28);
-  color: rgba(255, 253, 248, 0.78);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-.hero-motion-header span:first-child {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.hero-motion-header span:first-child::before {
-  width: 0.45rem;
-  height: 0.45rem;
-  background: var(--accent);
-  content: "";
-}
-
 .hero-video {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
   object-position: center 45%;
 }
@@ -769,7 +731,6 @@ select {
 }
 
 .eyebrow span,
-.hero-motion-header span:first-child::before,
 .confidence-layout li::before {
   animation: ember-pulse 2.8s ease-in-out infinite;
   transform-origin: center;
@@ -1181,7 +1142,12 @@ select {
 .contact-section {
   position: relative;
   overflow: hidden;
-  background: var(--accent);
+  background-color: var(--accent);
+  background-image:
+    linear-gradient(90deg, rgba(255, 90, 54, 0.96) 0%, rgba(255, 90, 54, 0.88) 46%, rgba(17, 26, 24, 0.48) 100%),
+    url("/images/blacksmith-forge-hero-faceless.jpg");
+  background-position: center center;
+  background-size: cover;
   color: var(--ink);
 }
 
@@ -1346,7 +1312,7 @@ select {
 
 .footer-main {
   display: grid;
-  grid-template-columns: 0.7fr 1.1fr 1fr;
+  grid-template-columns: 1fr auto;
   gap: 3rem;
   align-items: start;
   padding-bottom: 4rem;
@@ -1355,13 +1321,6 @@ select {
 .footer-brand .brand-mark {
   --mark-cutout: var(--dark);
   color: var(--paper);
-}
-
-.footer-main > p {
-  max-width: 330px;
-  margin: 0;
-  color: #a3aca9;
-  font-size: 0.85rem;
 }
 
 .footer-main nav {
@@ -1583,12 +1542,6 @@ select {
 
   .contact-layout {
     gap: 4rem;
-  }
-}
-
-@media (max-width: 1180px) {
-  .hero-motion {
-    display: none;
   }
 }
 
@@ -1855,10 +1808,6 @@ select {
     object-position: 69% center;
   }
 
-  .hero-video {
-    display: none;
-  }
-
   .hero-shade {
     background:
       linear-gradient(90deg, rgba(7, 12, 11, 0.94) 0%, rgba(7, 12, 11, 0.76) 100%),
@@ -1982,7 +1931,7 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-motion {
+  .hero-video {
     display: none;
   }
 
@@ -2006,7 +1955,6 @@ select {
   }
 
   .eyebrow span,
-  .hero-motion-header span:first-child::before,
   .confidence-layout li::before {
     animation: none !important;
   }

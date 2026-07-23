@@ -15,7 +15,6 @@ export default function Footer() {
           <span className="brand-mark"><LogoMark size={34} /></span>
           <span>SolutionForge</span>
         </a>
-        <p>Practical AI systems for work that should not stay manual.</p>
         <nav aria-label="Footer navigation">
           {footerLinks.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
         </nav>

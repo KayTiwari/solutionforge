@@ -15,20 +15,14 @@ export default function Hero() {
             priority
             sizes="100vw"
           />
+          <HeroVideo />
           <div className="hero-shade" />
-          <div className="hero-motion" aria-hidden="true">
-            <div className="hero-motion-header">
-              <span>Forge footage / Pexels</span>
-              <span>00:20</span>
-            </div>
-            <HeroVideo />
-          </div>
         </div>
 
         <div className="shell hero-layout">
           <div className="hero-copy">
             <p className="eyebrow"><span /> AI workflows · SEO operations · Reporting</p>
-            <h1>Automate the work your team repeats every week.</h1>
+            <h1>Build and Automate your workflows.</h1>
             <p className="hero-lede">
               We help growth and operations teams automate research, reporting,
               and publishing—while keeping the tools, approvals, and judgment
