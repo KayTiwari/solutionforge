@@ -1,4 +1,5 @@
 import LogoMark from "./LogoMark";
+import SlowScrollLink from "./SlowScrollLink";
 
 const footerLinks = [
   { label: "Expertise", href: "#services" },
@@ -6,7 +7,7 @@ const footerLinks = [
   { label: "Method", href: "#approach" },
   { label: "Delivery", href: "#work" },
   { label: "Contact", href: "#contact" },
-];
+] as const;
 
 export default function Footer() {
   return (
@@ -17,7 +18,11 @@ export default function Footer() {
           <span>SolutionForge</span>
         </a>
         <nav aria-label="Footer navigation">
-          {footerLinks.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
+          {footerLinks.map((link) => (
+            <SlowScrollLink key={link.href} href={link.href}>
+              {link.label}
+            </SlowScrollLink>
+          ))}
         </nav>
       </div>
       <div className="shell footer-base">

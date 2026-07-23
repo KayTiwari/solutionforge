@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, ReactNode, useRef } from "react";
+import { MouseEvent, ReactNode } from "react";
 
 type SlowScrollLinkProps = {
   children: ReactNode;
@@ -11,10 +11,9 @@ type SlowScrollLinkProps = {
 
 const scrollDuration = 1150;
 const headerOffset = 76;
+let activeScrollAnimation: number | null = null;
 
 export default function SlowScrollLink({ children, className, href, onClick }: SlowScrollLinkProps) {
-  const animationFrame = useRef<number | null>(null);
-
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event);
 
@@ -27,8 +26,9 @@ export default function SlowScrollLink({ children, className, href, onClick }: S
 
     event.preventDefault();
 
-    if (animationFrame.current !== null) {
-      cancelAnimationFrame(animationFrame.current);
+    if (activeScrollAnimation !== null) {
+      cancelAnimationFrame(activeScrollAnimation);
+      activeScrollAnimation = null;
     }
 
     const startY = window.scrollY;
@@ -54,14 +54,14 @@ export default function SlowScrollLink({ children, className, href, onClick }: S
       window.scrollTo(0, startY + distance * eased);
 
       if (progress < 1) {
-        animationFrame.current = requestAnimationFrame(step);
+        activeScrollAnimation = requestAnimationFrame(step);
       } else {
-        animationFrame.current = null;
+        activeScrollAnimation = null;
         window.history.pushState(null, "", href);
       }
     };
 
-    animationFrame.current = requestAnimationFrame(step);
+    activeScrollAnimation = requestAnimationFrame(step);
   };
 
   return (

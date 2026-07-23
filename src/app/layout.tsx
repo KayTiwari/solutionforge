@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import { AnimatedFavicon } from "./components/AnimatedFavicon";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://solutionforge.dev"),
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    apple: [
+      { url: "/apple-icon.png", type: "image/png", sizes: "180x180" },
+    ],
+  },
   title: "SolutionForge | Websites, outreach & AI systems",
   description:
     "SolutionForge builds business websites, creates thoughtful outreach systems, and automates recurring work for growth and operations teams.",
@@ -46,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <AnimatedFavicon />
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>

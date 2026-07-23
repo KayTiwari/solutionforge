@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Web + outreach", href: "#growth" },
   { label: "Method", href: "#approach" },
   { label: "Delivery", href: "#work" },
-];
+] as const;
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,7 +40,9 @@ export default function Navbar() {
 
         <ul className="desktop-nav">
           {navLinks.map((link) => (
-            <li key={link.href}><a href={link.href}>{link.label}</a></li>
+            <li key={link.href}>
+              <SlowScrollLink href={link.href}>{link.label}</SlowScrollLink>
+            </li>
           ))}
         </ul>
 
@@ -70,7 +72,13 @@ export default function Navbar() {
       >
         <div className="shell">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</a>
+            <SlowScrollLink
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </SlowScrollLink>
           ))}
           <SlowScrollLink href="#contact" onClick={() => setMenuOpen(false)}>
             Discuss a project <span className="link-icon" aria-hidden="true">↗</span>

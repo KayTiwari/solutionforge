@@ -1425,8 +1425,11 @@ select {
   background-image:
     linear-gradient(270deg, rgba(255, 90, 54, 0.96) 0%, rgba(255, 90, 54, 0.88) 46%, rgba(17, 26, 24, 0.48) 100%),
     url("/images/blacksmith-forge-hero-faceless.jpg");
-  background-position: center center;
-  background-size: cover;
+  background-position:
+    center,
+    calc(50% - clamp(14rem, 22vw, 28rem)) center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, cover;
   color: var(--ink);
 }
 
@@ -1683,7 +1686,7 @@ select {
 
   .service-row:hover .service-number {
     color: var(--signal);
-    transform: translateY(-0.25rem) rotate(-6deg);
+    transform: translate(0.85rem, -0.25rem) rotate(-6deg);
   }
 
   .service-row:hover .service-heading h3 {
@@ -2010,7 +2013,8 @@ select {
     background-image:
       linear-gradient(180deg, rgba(7, 12, 11, 0.86) 0%, rgba(7, 12, 11, 0.7) 42%, rgba(255, 90, 54, 0.9) 70%, rgba(255, 90, 54, 0.98) 100%),
       url("/images/blacksmith-forge-hero-faceless.jpg");
-    background-position: 64% center;
+    background-position: center, 64% center;
+    background-size: 100% 100%, cover;
   }
 
   .approach-thesis {
