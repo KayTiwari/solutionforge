@@ -1,11 +1,16 @@
 import KineticHeading from "./KineticHeading";
+import ProcessIcon, { type ProcessIconName } from "./ProcessIcon";
 
-const workflow = [
-  { title: "Intake", detail: "Goals, audience, and constraints enter once" },
-  { title: "Shape", detail: "The plan and success criteria become explicit" },
-  { title: "Build", detail: "The site, outreach, or workflow takes working form" },
-  { title: "Review", detail: "Your team checks consequential decisions" },
-  { title: "Measure", detail: "The result is compared with baseline" },
+const workflow: Array<{
+  title: string;
+  detail: string;
+  icon: ProcessIconName;
+}> = [
+  { title: "Intake", detail: "Goals, audience, and constraints enter once", icon: "intake" },
+  { title: "Shape", detail: "The plan and success criteria become explicit", icon: "shape" },
+  { title: "Build", detail: "The site, outreach, or workflow takes working form", icon: "build" },
+  { title: "Review", detail: "Your team checks consequential decisions", icon: "review" },
+  { title: "Measure", detail: "The result is compared with baseline", icon: "measure" },
 ];
 
 const definitionOfDone = [
@@ -42,9 +47,11 @@ export default function Delivery() {
               <span>Example workflow</span>
             </div>
             <ol className="workflow" aria-label="Delivery workflow from intake to measurement">
-              {workflow.map((step, index) => (
+              {workflow.map((step) => (
                 <li key={step.title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span className="workflow-icon" aria-hidden="true">
+                    <ProcessIcon name={step.icon} />
+                  </span>
                   <div>
                     <h4>{step.title}</h4>
                     <p>{step.detail}</p>

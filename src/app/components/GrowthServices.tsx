@@ -1,4 +1,7 @@
 import KineticHeading from "./KineticHeading";
+import ProcessIcon, { type ProcessIconName } from "./ProcessIcon";
+
+const stage = (label: string, icon: ProcessIconName) => ({ label, icon });
 
 const offers = [
   {
@@ -10,7 +13,12 @@ const offers = [
       "For businesses launching, repositioning, or outgrowing a site that no longer explains what they do.",
     description:
       "We shape the message, map the path through the site, and design and build a responsive experience that makes the next action clear.",
-    stages: ["Frame", "Design", "Build", "Launch"],
+    stages: [
+      stage("Frame", "frame"),
+      stage("Design", "design"),
+      stage("Build", "build"),
+      stage("Launch", "launch"),
+    ],
     deliverables: [
       "Positioning + sitemap",
       "Copy direction + design",
@@ -29,7 +37,12 @@ const offers = [
       "For businesses with a strong offer but no consistent way to identify good-fit prospects, start conversations, and follow up.",
     description:
       "We define the audience, develop the message, and set up a respectful outreach workflow your team can review, measure, and improve.",
-    stages: ["Target", "Research", "Reach", "Learn"],
+    stages: [
+      stage("Target", "target"),
+      stage("Research", "research"),
+      stage("Reach", "reach"),
+      stage("Learn", "learn"),
+    ],
     deliverables: [
       "Audience definition",
       "Prospect research",
@@ -70,10 +83,12 @@ export default function GrowthServices() {
               <div className="growth-path">
                 <p className="mono-label">Working path</p>
                 <ol aria-label={`${offer.label.split(" / ")[0]} working path`}>
-                  {offer.stages.map((stage, index) => (
-                    <li key={stage}>
-                      <span>{String(index + 1).padStart(2, "0")}</span>
-                      {stage}
+                  {offer.stages.map((pathStage) => (
+                    <li key={pathStage.label}>
+                      <span className="growth-path-icon" aria-hidden="true">
+                        <ProcessIcon name={pathStage.icon} />
+                      </span>
+                      {pathStage.label}
                     </li>
                   ))}
                 </ol>

@@ -884,9 +884,7 @@ select {
   line-height: 1.55;
 }
 
-.service-number,
 .phase-number,
-.workflow > li > span,
 .brief-panel ol > li > span {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -1003,8 +1001,9 @@ select {
   isolation: isolate;
   display: grid;
   overflow: hidden;
-  grid-template-columns: 0.25fr 1.05fr 1fr;
+  grid-template-columns: minmax(6rem, 0.3fr) 1.05fr 1fr;
   gap: 3rem;
+  align-items: center;
   padding: 3.25rem 0;
   border-top: 1px solid var(--line);
   transition:
@@ -1023,11 +1022,23 @@ select {
   transition: transform 560ms cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.service-number {
+.service-icon {
+  display: grid;
+  width: clamp(5.25rem, 8vw, 7.5rem);
+  aspect-ratio: 1;
+  align-self: center;
   color: var(--accent-dark);
+  justify-self: center;
+  place-items: center;
   transition:
     color 260ms ease,
     transform 440ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.service-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .service-heading h3 {
@@ -1193,23 +1204,37 @@ select {
 }
 
 .growth-path li {
+  display: flex;
+  min-height: 8.75rem;
   min-width: 0;
-  padding: 1rem 0.85rem;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.15rem 0.85rem 1rem;
   border-right: 1px solid var(--offer-line);
+  flex-direction: column;
   font-size: 0.72rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .growth-path li:last-child {
   border-right: 0;
 }
 
-.growth-path li span {
-  display: block;
-  margin-bottom: 1.75rem;
+.growth-path-icon {
+  display: grid;
+  width: clamp(3.25rem, 4vw, 4.5rem);
+  aspect-ratio: 1;
+  margin: 0 auto 0.9rem;
   color: var(--offer-signal);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  place-items: center;
+  transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.growth-path-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .growth-offer-description {
@@ -1443,7 +1468,7 @@ select {
 .workflow li {
   position: relative;
   isolation: isolate;
-  min-height: 14rem;
+  min-height: 18rem;
   overflow: hidden;
   padding: 1.5rem 1.25rem;
   border-right: 1px solid var(--line);
@@ -1480,13 +1505,22 @@ select {
   border-right: 0;
 }
 
-.workflow > li > span {
-  display: block;
-  margin-bottom: 4.5rem;
+.workflow-icon {
+  display: grid;
+  width: 100%;
+  min-height: 8.25rem;
+  margin-bottom: 1.25rem;
   color: var(--accent-dark);
+  place-items: center;
   transition:
     color 260ms ease,
     transform 440ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.workflow-icon svg {
+  display: block;
+  width: clamp(5rem, 6vw, 6.75rem);
+  height: auto;
 }
 
 .workflow h4 {
@@ -1815,9 +1849,9 @@ select {
     transform-origin: left;
   }
 
-  .service-row:hover .service-number {
+  .service-row:hover .service-icon {
     color: var(--signal);
-    transform: translate(0.85rem, -0.25rem) rotate(-6deg);
+    transform: translate(0.45rem, -0.2rem) rotate(-4deg) scale(1.05);
   }
 
   .service-row:hover .service-heading h3 {
@@ -1881,9 +1915,9 @@ select {
     transform: scaleX(1);
   }
 
-  .workflow li:hover > span {
+  .workflow li:hover .workflow-icon {
     color: var(--signal);
-    transform: translateY(-0.2rem) rotate(-6deg);
+    transform: translateY(-0.25rem) rotate(-4deg) scale(1.05);
   }
 
   .workflow li:hover h4 {
@@ -1892,6 +1926,10 @@ select {
 
   .workflow li:hover p {
     color: var(--dark-text);
+  }
+
+  .growth-path li:hover .growth-path-icon {
+    transform: translateY(-0.2rem) rotate(-4deg) scale(1.06);
   }
 
   .brief-panel ol li:hover {
@@ -2409,7 +2447,7 @@ select {
     transform-origin: right;
   }
 
-  html.reveal-ready .service-row.reveal-once .service-number {
+  html.reveal-ready .service-row.reveal-once .service-icon {
     animation: scene-number-stamp 620ms cubic-bezier(0.34, 1.56, 0.64, 1) 90ms both;
     animation-play-state: var(--reveal-play-state);
   }
@@ -2786,7 +2824,7 @@ select {
   }
 
   .workflow li {
-    min-height: 12rem;
+    min-height: 16rem;
   }
 
   .contact-layout {
@@ -2935,8 +2973,12 @@ select {
   }
 
   .service-row {
-    grid-template-columns: 3rem 1fr;
+    grid-template-columns: 5.25rem 1fr;
     gap: 1rem;
+  }
+
+  .service-icon {
+    width: 4.5rem;
   }
 
   .service-detail {
@@ -2989,8 +3031,9 @@ select {
 
   .workflow li {
     display: grid;
-    grid-template-columns: 2.25rem 1fr;
-    gap: 1rem;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1.25rem;
+    align-items: center;
     min-height: 0;
     border-right: 0;
     border-bottom: 1px solid var(--line);
@@ -3000,8 +3043,13 @@ select {
     border-bottom: 0;
   }
 
-  .workflow > li > span {
+  .workflow-icon {
+    min-height: 0;
     margin-bottom: 0;
+  }
+
+  .workflow-icon svg {
+    width: 4.25rem;
   }
 
   .contact-layout {
@@ -3114,8 +3162,12 @@ select {
   }
 
   .service-row {
-    grid-template-columns: 2rem 1fr;
+    grid-template-columns: 4.25rem 1fr;
     padding: 2.5rem 0;
+  }
+
+  .service-icon {
+    width: 3.75rem;
   }
 
   .service-detail ul {
@@ -3151,6 +3203,10 @@ select {
   .growth-path ol,
   .growth-deliverables ul {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .growth-path-icon {
+    width: 4rem;
   }
 
   .growth-path li:nth-child(2) {
@@ -3245,14 +3301,15 @@ select {
   .brand-mark,
   .menu-button,
   .service-row,
-  .service-row .service-number,
+  .service-row .service-icon,
   .service-row .service-heading h3,
+  .growth-path .growth-path-icon,
   .phase-list li,
   .phase-list li .phase-number,
   .phase-list li h3,
   .phase-list li .phase-artifact,
   .workflow li,
-  .workflow li > span,
+  .workflow .workflow-icon,
   .workflow li h4,
   .brief-panel ol li,
   .brief-panel ol li > span,

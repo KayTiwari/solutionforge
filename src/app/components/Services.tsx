@@ -1,8 +1,15 @@
 import KineticHeading from "./KineticHeading";
+import ProcessIcon, { type ProcessIconName } from "./ProcessIcon";
 
-const services = [
+const services: Array<{
+  icon: ProcessIconName;
+  title: string;
+  useWhen: string;
+  description: string;
+  deliverables: string[];
+}> = [
   {
-    number: "01",
+    icon: "automation",
     title: "AI workflow systems",
     useWhen: "Use when high-value work is trapped in repeatable research, routing, drafting, QA, or reporting.",
     description:
@@ -10,7 +17,7 @@ const services = [
     deliverables: ["Workflow architecture", "Model + tool integration", "Review controls", "Operating runbook"],
   },
   {
-    number: "02",
+    icon: "search",
     title: "Search & content infrastructure",
     useWhen: "Use when acquisition depends on publishing quality, but the process is slow, fragmented, or impossible to measure.",
     description:
@@ -18,7 +25,7 @@ const services = [
     deliverables: ["Technical SEO audit", "Information architecture", "Editorial workflow", "Measurement plan"],
   },
   {
-    number: "03",
+    icon: "decision",
     title: "Decision & measurement systems",
     useWhen: "Use when the data exists but teams still spend too much time assembling reports or debating what changed.",
     description:
@@ -44,8 +51,10 @@ export default function Services() {
 
         <div className="service-list">
           {services.map((service) => (
-            <article className="service-row" key={service.number}>
-              <span className="service-number">{service.number}</span>
+            <article className="service-row" key={service.title}>
+              <span className="service-icon" aria-hidden="true">
+                <ProcessIcon name={service.icon} />
+              </span>
               <div className="service-heading">
                 <h3>{service.title}</h3>
                 <p className="service-use">{service.useWhen}</p>
