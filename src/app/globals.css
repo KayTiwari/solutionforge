@@ -555,6 +555,11 @@ select {
 
 /* Hero */
 
+.hero-pin-stage {
+  position: relative;
+  background: var(--dark);
+}
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -881,6 +886,7 @@ select {
 }
 
 .confidence-bar {
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
   background: var(--white);
 }
@@ -964,6 +970,7 @@ select {
 /* Expertise */
 
 .services-section {
+  overflow: hidden;
   background: var(--paper);
 }
 
@@ -1066,6 +1073,7 @@ select {
 /* Website + outreach */
 
 .growth-section {
+  overflow: hidden;
   background: var(--white);
 }
 
@@ -1356,6 +1364,7 @@ select {
 /* Delivery */
 
 .work-section {
+  overflow: hidden;
   background: var(--paper-deep);
 }
 
@@ -1520,6 +1529,7 @@ select {
 
 .contact-section {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   background-color: var(--accent);
   background-image:
@@ -1693,6 +1703,7 @@ select {
 /* Footer */
 
 .site-footer {
+  overflow: hidden;
   padding: 4rem 0 2rem;
   background: var(--dark);
   color: var(--white);
@@ -1921,27 +1932,31 @@ select {
 
 @keyframes growth-stage-assemble {
   from {
-    opacity: 0.12;
+    opacity: 1;
     clip-path: inset(0 100% 0 0);
-    translate: 0 0.75rem;
+    scale: 0.72 1;
   }
   to {
     opacity: 1;
     clip-path: inset(0);
-    translate: 0 0;
+    scale: 1;
   }
 }
 
 @keyframes method-phase-resolve {
   from {
-    opacity: 0.38;
-    clip-path: inset(0 0 0 8%);
-    translate: 1.25rem 0;
+    opacity: 0.08;
+    clip-path: polygon(16% 0, 100% 0, 92% 100%, 0 100%);
+    translate: 5rem 0;
+    rotate: 0.9deg;
+    scale: 0.94;
   }
   to {
     opacity: 1;
-    clip-path: inset(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
   }
 }
 
@@ -1949,14 +1964,244 @@ select {
   from {
     opacity: 0.08;
     clip-path: inset(0 100% 0 0);
+    translate: 0 3.5rem;
+    rotate: -1.5deg;
+    scale: 0.88;
   }
   to {
     opacity: 1;
     clip-path: inset(0);
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@keyframes scene-label-strike {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    translate: -3.5rem 0;
+    letter-spacing: 0.28em;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+    letter-spacing: 0.12em;
+  }
+}
+
+@keyframes scene-title-forge {
+  from {
+    opacity: 0.08;
+    clip-path: polygon(0 100%, 100% 76%, 100% 100%, 0 100%);
+    translate: 0 4.5rem;
+    scale: 0.94;
+  }
+  to {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes scene-copy-thread {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%);
+    translate: 4rem 0;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+  }
+}
+
+@keyframes scene-slam-in {
+  from {
+    opacity: 0.12;
+    clip-path: inset(0 100% 0 0);
+    translate: -7vw 1.5rem;
+    rotate: -1.25deg;
+    scale: 0.96;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@keyframes scene-slam-in-reverse {
+  from {
+    opacity: 0.12;
+    clip-path: inset(0 0 0 100%);
+    translate: 7vw 1.5rem;
+    rotate: 1.25deg;
+    scale: 0.96;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@keyframes scene-detail-lock {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    translate: 3rem 0;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+  }
+}
+
+@keyframes scene-number-stamp {
+  from {
+    opacity: 0;
+    translate: 0 -2rem;
+    rotate: -18deg;
+    scale: 1.8;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@keyframes growth-card-left {
+  from {
+    opacity: 0.08;
+    clip-path: inset(0 100% 0 0);
+    transform: translate3d(-11vw, 3rem, 0) rotateY(24deg) rotateZ(-1.5deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: translate3d(0, 0, 0) rotateY(0) rotateZ(0) scale(1);
+  }
+}
+
+@keyframes growth-card-right {
+  from {
+    opacity: 0.08;
+    clip-path: inset(0 0 0 100%);
+    transform: translate3d(11vw, 3rem, 0) rotateY(-24deg) rotateZ(1.5deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: translate3d(0, 0, 0) rotateY(0) rotateZ(0) scale(1);
+  }
+}
+
+@keyframes scene-panel-lock {
+  from {
+    opacity: 0.08;
+    clip-path: inset(12% 12% 12% 12%);
+    translate: 0 4rem;
+    rotate: 1.25deg;
+    scale: 0.86;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@keyframes scene-panel-drive {
+  from {
+    opacity: 0.08;
+    clip-path: inset(0 0 0 100%);
+    transform: translate3d(10vw, 3rem, 0) rotate(3deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: translate3d(0, 0, 0) rotate(0) scale(1);
+  }
+}
+
+@keyframes scene-curtain-clear {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes scene-orbit-cast {
+  from {
+    opacity: 0;
+    rotate: -35deg;
+    scale: 0.4;
+  }
+  to {
+    opacity: 1;
+    rotate: 0deg;
+    scale: 1;
+  }
+}
+
+@keyframes footer-link-cascade {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    translate: 0 -2.5rem;
+    rotate: -4deg;
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+    rotate: 0deg;
+  }
+}
+
+@keyframes scene-rail-inline {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
+@keyframes scene-rail-block {
+  from {
+    scale: 1 0;
+  }
+  to {
+    scale: 1 1;
   }
 }
 
 @supports (overflow: clip) {
+  .confidence-bar,
+  .services-section,
+  .growth-section,
+  .work-section,
+  .site-footer {
+    overflow: clip;
+  }
+
   @media (min-width: 1021px) and (min-height: 720px) {
     .approach-section {
       overflow: clip;
@@ -1983,6 +2228,411 @@ select {
 }
 
 @supports (animation-timeline: view()) and (animation-range: entry 0% cover 100%) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The ticker strikes in as the pinned hero releases. */
+    .confidence-bar {
+      view-timeline-name: --confidence-scene;
+      view-timeline-axis: block;
+    }
+
+    .confidence-layout > p {
+      animation: scene-label-strike 1ms linear both;
+      animation-timeline: --confidence-scene;
+      animation-range: entry 0% cover 28%;
+    }
+
+    .confidence-ticker {
+      animation: scene-detail-lock 1ms linear both;
+      animation-timeline: --confidence-scene;
+      animation-range: entry 4% cover 34%;
+    }
+
+    /* Expertise rows alternate direction and lock their contents into place. */
+    .services-section .section-label {
+      animation: scene-label-strike 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 34%;
+    }
+
+    .services-section .section-intro h2 {
+      animation: scene-title-forge 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 34%;
+    }
+
+    .services-section .section-intro > div > p {
+      animation: scene-copy-thread 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+
+    .service-row {
+      animation: scene-slam-in 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 3% cover 38%;
+    }
+
+    .service-row:nth-child(even) {
+      animation-name: scene-slam-in-reverse;
+    }
+
+    .service-row .service-number {
+      animation: scene-number-stamp 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 32%;
+    }
+
+    .service-row .service-heading {
+      animation: scene-title-forge 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 7% cover 38%;
+    }
+
+    .service-row .service-detail {
+      animation: scene-detail-lock 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 14% cover 45%;
+    }
+
+    .service-row::after {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--signal));
+      content: "";
+      pointer-events: none;
+      scale: 0 1;
+      transform-origin: left;
+      animation: scene-rail-inline 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 34%;
+    }
+
+    .service-row:nth-child(even)::after {
+      transform-origin: right;
+    }
+
+    .fit-note {
+      animation: scene-slam-in 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 34%;
+    }
+
+    /* Website and outreach cards fold toward one another in 3D. */
+    .growth-section .section-label {
+      animation: scene-label-strike 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 34%;
+    }
+
+    .growth-section .section-intro h2 {
+      animation: scene-title-forge 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+
+    .growth-section .section-intro > div > p {
+      animation: scene-copy-thread 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+
+    .growth-grid {
+      perspective: 1600px;
+    }
+
+    .growth-offer {
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .growth-offer-web {
+      transform-origin: right center;
+      animation: growth-card-left 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 2% cover 38%;
+    }
+
+    .growth-offer-outreach {
+      transform-origin: left center;
+      animation: growth-card-right 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 44%;
+    }
+
+    .growth-offer h3 {
+      animation: scene-title-forge 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+
+    .growth-offer-use {
+      animation: scene-copy-thread 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+
+    .growth-offer-description,
+    .growth-deliverables {
+      animation: scene-detail-lock 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 34%;
+    }
+
+    /* The Method thesis is forged once; its phase rows resolve one by one. */
+    .approach-section {
+      view-timeline-name: --method-scene;
+      view-timeline-axis: block;
+    }
+
+    .approach-thesis .section-label {
+      animation: scene-label-strike 1ms linear both;
+      animation-timeline: --method-scene;
+      animation-range: entry 2% cover 14%;
+    }
+
+    .approach-thesis h2 {
+      animation: scene-title-forge 1ms linear both;
+      animation-timeline: --method-scene;
+      animation-range: entry 4% cover 20%;
+    }
+
+    .approach-thesis > p {
+      animation: scene-copy-thread 1ms linear both;
+      animation-timeline: --method-scene;
+      animation-range: entry 8% cover 24%;
+    }
+
+    .method-standard {
+      animation: scene-panel-lock 1ms linear both;
+      animation-timeline: --method-scene;
+      animation-range: entry 12% cover 30%;
+    }
+
+    .approach-section::after {
+      transform-origin: center;
+      animation: scene-orbit-cast 1ms linear both;
+      animation-timeline: --method-scene;
+      animation-range: entry 5% cover 45%;
+    }
+
+    .phase-list .phase-number {
+      animation: scene-number-stamp 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 6% cover 30%;
+    }
+
+    .phase-list {
+      position: relative;
+    }
+
+    .phase-list::before {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+      left: 1.05rem;
+      width: 2px;
+      background: linear-gradient(var(--signal), var(--accent));
+      content: "";
+      pointer-events: none;
+      scale: 1 0;
+      transform-origin: top;
+      animation: scene-rail-block 1ms linear both;
+      animation-timeline: --method-scene;
+      animation-range: entry 8% cover 62%;
+    }
+
+    .phase-list li::after {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 0;
+      width: 2.15rem;
+      height: 2px;
+      background: var(--signal);
+      content: "";
+      pointer-events: none;
+      scale: 0 1;
+      transform-origin: left;
+      animation: scene-rail-inline 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 16% cover 38%;
+    }
+
+    /* The delivery blueprint compresses into register, then its cells assemble. */
+    .work-section .section-label {
+      animation: scene-number-stamp 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+
+    .work-section .section-intro h2 {
+      animation: scene-panel-lock 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 34%;
+    }
+
+    .work-section .section-intro > div > p {
+      animation: scene-copy-thread 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+
+    .blueprint {
+      animation: scene-panel-lock 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 3% cover 38%;
+    }
+
+    .done-panel {
+      animation: scene-panel-drive 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 44%;
+    }
+
+    .done-panel dl > div {
+      animation: scene-detail-lock 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+
+    /* Contact arrives behind an orange curtain as both columns converge. */
+    .contact-section {
+      view-timeline-name: --contact-scene;
+      view-timeline-axis: block;
+    }
+
+    .contact-section::after {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      background: var(--accent);
+      content: "";
+      pointer-events: none;
+      animation: scene-curtain-clear 1ms linear both;
+      animation-timeline: --contact-scene;
+      animation-range: entry 0% cover 42%;
+    }
+
+    .contact-section::before {
+      transform-origin: center;
+      animation: scene-orbit-cast 1ms linear both;
+      animation-timeline: --contact-scene;
+      animation-range: entry 8% cover 48%;
+    }
+
+    .contact-layout {
+      z-index: 1;
+    }
+
+    .contact-copy {
+      animation: scene-slam-in 1ms linear both;
+      animation-timeline: --contact-scene;
+      animation-range: entry 5% cover 38%;
+    }
+
+    .brief-panel {
+      transform-origin: right center;
+      animation: scene-panel-drive 1ms linear both;
+      animation-timeline: --contact-scene;
+      animation-range: entry 12% cover 48%;
+    }
+
+    .brief-panel ol li {
+      animation: scene-detail-lock 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+
+    .brief-note {
+      animation: scene-slam-in-reverse 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+
+    /* Footer links cascade down while the base rule cuts across. */
+    .site-footer {
+      view-timeline-name: --footer-scene;
+      view-timeline-axis: block;
+    }
+
+    .footer-brand {
+      animation: scene-slam-in 1ms linear both;
+      animation-timeline: --footer-scene;
+      animation-range: entry 0% entry 55%;
+    }
+
+    .footer-main nav a {
+      animation: footer-link-cascade 1ms linear both;
+      animation-timeline: --footer-scene;
+    }
+
+    .footer-main nav a:nth-child(1) {
+      animation-range: entry 10% entry 55%;
+    }
+
+    .footer-main nav a:nth-child(2) {
+      animation-range: entry 18% entry 64%;
+    }
+
+    .footer-main nav a:nth-child(3) {
+      animation-range: entry 26% entry 73%;
+    }
+
+    .footer-main nav a:nth-child(4) {
+      animation-range: entry 34% entry 82%;
+    }
+
+    .footer-main nav a:nth-child(5) {
+      animation-range: entry 42% entry 91%;
+    }
+
+    .footer-base {
+      position: relative;
+      border-top-color: transparent;
+      animation: scene-detail-lock 1ms linear both;
+      animation-timeline: --footer-scene;
+      animation-range: entry 52% entry 100%;
+    }
+
+    .footer-base::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--signal), var(--line-dark));
+      content: "";
+      scale: 0 1;
+      transform-origin: left;
+      animation: scene-rail-inline 1ms linear both;
+      animation-timeline: --footer-scene;
+      animation-range: entry 38% entry 96%;
+    }
+
+    .confidence-ticker:focus-within,
+    .service-row:focus-within,
+    .fit-note:focus-within,
+    .growth-offer:focus-within,
+    .contact-copy:focus-within,
+    .footer-brand:focus,
+    .footer-base:focus-within,
+    .footer-main nav a:focus {
+      opacity: 1 !important;
+      clip-path: none !important;
+      translate: none !important;
+      rotate: none !important;
+      scale: none !important;
+      transform: none !important;
+      animation: none !important;
+      animation-timeline: none !important;
+    }
+  }
+
   @media (min-width: 561px) and (prefers-reduced-motion: no-preference) {
     .growth-path {
       view-timeline-name: --growth-path;
@@ -2067,6 +2717,41 @@ select {
     .workflow li:nth-child(5) {
       animation-range: entry 42% cover 54%;
     }
+  }
+}
+
+/*
+ * Give the opening scene a short scroll runway on larger screens. The hero
+ * stays pinned while that runway is consumed, then releases with the document.
+ * Small screens and reduced-motion users keep the direct scrolling layout.
+ */
+@media screen
+  and (min-width: 1021px)
+  and (min-height: 800px)
+  and (hover: hover)
+  and (pointer: fine)
+  and (prefers-reduced-motion: no-preference) {
+  .hero-pin-stage {
+    --hero-hold: clamp(10rem, 22svh, 15rem);
+    block-size: calc(100svh + var(--hero-hold));
+  }
+
+  .hero-pin-stage > .hero {
+    position: sticky;
+    z-index: 0;
+    inset-block-start: 0;
+    block-size: 100svh;
+    min-block-size: 0;
+  }
+
+  .hero-pin-stage .hero-layout {
+    block-size: 100%;
+    min-block-size: 0;
+  }
+
+  .confidence-bar {
+    position: relative;
+    z-index: 1;
   }
 }
 
