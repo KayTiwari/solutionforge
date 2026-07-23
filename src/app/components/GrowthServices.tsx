@@ -1,3 +1,5 @@
+import KineticHeading from "./KineticHeading";
+
 const offers = [
   {
     className: "growth-offer-web",
@@ -46,7 +48,7 @@ export default function GrowthServices() {
         <div className="section-intro growth-intro">
           <p className="section-label">Build + reach / 02</p>
           <div>
-            <h2>A stronger front door—and a better way to start conversations.</h2>
+            <KineticHeading>A stronger front door—and a better way to start conversations.</KineticHeading>
             <p>
               We build websites and help businesses run thoughtful outreach,
               connecting clear positioning with practical systems a team can own.

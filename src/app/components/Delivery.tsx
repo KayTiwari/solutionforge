@@ -1,3 +1,5 @@
+import KineticHeading from "./KineticHeading";
+
 const workflow = [
   { title: "Intake", detail: "Goals, audience, and constraints enter once" },
   { title: "Shape", detail: "The plan and success criteria become explicit" },
@@ -20,7 +22,7 @@ export default function Delivery() {
         <div className="section-intro work-intro">
           <p className="section-label">Delivery / 04</p>
           <div>
-            <h2>See what gets built before you buy a promise.</h2>
+            <KineticHeading>See what gets built before you buy a promise.</KineticHeading>
             <p>
               A credible engagement starts with an inspectable path and a clear
               definition of done. This blueprint shows how a website, outreach

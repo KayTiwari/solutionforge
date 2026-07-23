@@ -1,3 +1,5 @@
+import KineticHeading from "./KineticHeading";
+
 const phases = [
   {
     number: "01",
@@ -31,7 +33,7 @@ export default function Method() {
       <div className="shell approach-layout">
         <div className="approach-thesis">
           <p className="section-label section-label-light">Method / 03</p>
-          <h2>Good delivery starts with a clear business problem.</h2>
+          <KineticHeading>Good delivery starts with a clear business problem.</KineticHeading>
           <p>
             A polished page, a long prospect list, or an AI demo is not enough.
             The work has to fit your audience, your team, and the way decisions

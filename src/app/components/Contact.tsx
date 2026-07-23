@@ -1,3 +1,5 @@
+import KineticHeading from "./KineticHeading";
+
 const emailHref = "mailto:hello@solutionforge.dev?subject=SolutionForge%20project%20brief&body=Project%20type%20%28website%2C%20outreach%2C%20or%20automation%29%3A%0A%0ACurrent%20situation%3A%0A%0AWhat%20better%20looks%20like%3A%0A";
 
 export default function Contact() {
@@ -6,7 +8,7 @@ export default function Contact() {
       <div className="shell contact-layout">
         <div className="contact-copy">
           <p className="section-label section-label-light">Start / 05</p>
-          <h2>Tell us what needs to work better.</h2>
+          <KineticHeading>Tell us what needs to work better.</KineticHeading>
           <p>
             Tell us whether you need a website, outreach support, or a better
             workflow—and what is getting in the way today. That is enough for a

@@ -6,12 +6,14 @@ import Method from "./components/Method";
 import Delivery from "./components/Delivery";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import RevealController from "./components/RevealController";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main id="main-content">
+        <RevealController />
         <Hero />
         <Services />
         <GrowthServices />

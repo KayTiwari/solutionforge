@@ -1,3 +1,5 @@
+import KineticHeading from "./KineticHeading";
+
 const services = [
   {
     number: "01",
@@ -32,7 +34,7 @@ export default function Services() {
         <div className="section-intro">
           <p className="section-label">Expertise / 01</p>
           <div>
-            <h2>One partner from bottleneck to working system.</h2>
+            <KineticHeading>One partner from bottleneck to working system.</KineticHeading>
             <p>
               The through-line is simple: find consequential recurring work, redesign
               it, implement the right path, and build in ownership from the start.

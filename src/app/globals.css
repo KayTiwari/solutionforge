@@ -160,6 +160,26 @@ select {
   line-height: 1.7;
 }
 
+.kinetic-heading-visual {
+  display: block;
+}
+
+.kinetic-word,
+.kinetic-word > span {
+  display: inline-block;
+}
+
+.kinetic-word {
+  overflow: clip;
+  margin-inline: -0.035em;
+  padding-inline: 0.035em;
+  vertical-align: bottom;
+}
+
+.kinetic-word > span {
+  transform-origin: 50% 82%;
+}
+
 .button {
   --button-hover-bg: var(--accent-dark);
   --button-hover-color: var(--white);
@@ -2193,6 +2213,39 @@ select {
   }
 }
 
+@keyframes kinetic-word-lift {
+  from {
+    opacity: 0.08;
+    transform: translate3d(0, 1.15em, 0) rotate(7deg) skewX(-10deg) scale(0.88, 1.15);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0) skewX(0) scale(1);
+  }
+}
+
+@keyframes kinetic-word-drop {
+  from {
+    opacity: 0.08;
+    transform: translate3d(0, -1.05em, 0) rotate(-6deg) skewX(9deg) scale(1.08, 0.86);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0) skewX(0) scale(1);
+  }
+}
+
+@keyframes kinetic-word-shear {
+  from {
+    opacity: 0.08;
+    transform: translate3d(0.75em, 0.35em, 0) rotate(-3deg) skewX(14deg) scale(1.14, 0.82);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0) skewX(0) scale(1);
+  }
+}
+
 @supports (overflow: clip) {
   .confidence-bar,
   .services-section,
@@ -2227,496 +2280,453 @@ select {
   }
 }
 
-@supports (animation-timeline: view()) and (animation-range: entry 0% cover 100%) {
-  @media (prefers-reduced-motion: no-preference) {
-    /* The ticker strikes in as the pinned hero releases. */
-    .confidence-bar {
-      view-timeline-name: --confidence-scene;
-      view-timeline-axis: block;
-    }
-
-    .confidence-layout > p {
-      animation: scene-label-strike 1ms linear both;
-      animation-timeline: --confidence-scene;
-      animation-range: entry 0% cover 28%;
-    }
-
-    .confidence-ticker {
-      animation: scene-detail-lock 1ms linear both;
-      animation-timeline: --confidence-scene;
-      animation-range: entry 4% cover 34%;
-    }
-
-    /* Expertise rows alternate direction and lock their contents into place. */
-    .services-section .section-label {
-      animation: scene-label-strike 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 34%;
-    }
-
-    .services-section .section-intro h2 {
-      animation: scene-title-forge 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 34%;
-    }
-
-    .services-section .section-intro > div > p {
-      animation: scene-copy-thread 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 38%;
-    }
-
-    .service-row {
-      animation: scene-slam-in 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 3% cover 38%;
-    }
-
-    .service-row:nth-child(even) {
-      animation-name: scene-slam-in-reverse;
-    }
-
-    .service-row .service-number {
-      animation: scene-number-stamp 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 8% cover 32%;
-    }
-
-    .service-row .service-heading {
-      animation: scene-title-forge 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 7% cover 38%;
-    }
-
-    .service-row .service-detail {
-      animation: scene-detail-lock 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 14% cover 45%;
-    }
-
-    .service-row::after {
-      position: absolute;
-      z-index: 2;
-      top: 0;
-      right: 0;
-      left: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--signal));
-      content: "";
-      pointer-events: none;
-      scale: 0 1;
-      transform-origin: left;
-      animation: scene-rail-inline 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 8% cover 34%;
-    }
-
-    .service-row:nth-child(even)::after {
-      transform-origin: right;
-    }
-
-    .fit-note {
-      animation: scene-slam-in 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 34%;
-    }
-
-    /* Website and outreach cards fold toward one another in 3D. */
-    .growth-section .section-label {
-      animation: scene-label-strike 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 34%;
-    }
-
-    .growth-section .section-intro h2 {
-      animation: scene-title-forge 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 32%;
-    }
-
-    .growth-section .section-intro > div > p {
-      animation: scene-copy-thread 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 38%;
-    }
-
-    .growth-grid {
-      perspective: 1600px;
-    }
-
-    .growth-offer {
-      backface-visibility: hidden;
-      transform-style: preserve-3d;
-    }
-
-    .growth-offer-web {
-      transform-origin: right center;
-      animation: growth-card-left 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 2% cover 38%;
-    }
-
-    .growth-offer-outreach {
-      transform-origin: left center;
-      animation: growth-card-right 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 8% cover 44%;
-    }
-
-    .growth-offer h3 {
-      animation: scene-title-forge 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 32%;
-    }
-
-    .growth-offer-use {
-      animation: scene-copy-thread 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 38%;
-    }
-
-    .growth-offer-description,
-    .growth-deliverables {
-      animation: scene-detail-lock 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 34%;
-    }
-
-    /* The Method thesis is forged once; its phase rows resolve one by one. */
-    .approach-section {
-      view-timeline-name: --method-scene;
-      view-timeline-axis: block;
-    }
-
-    .approach-thesis .section-label {
-      animation: scene-label-strike 1ms linear both;
-      animation-timeline: --method-scene;
-      animation-range: entry 2% cover 14%;
-    }
-
-    .approach-thesis h2 {
-      animation: scene-title-forge 1ms linear both;
-      animation-timeline: --method-scene;
-      animation-range: entry 4% cover 20%;
-    }
-
-    .approach-thesis > p {
-      animation: scene-copy-thread 1ms linear both;
-      animation-timeline: --method-scene;
-      animation-range: entry 8% cover 24%;
-    }
-
-    .method-standard {
-      animation: scene-panel-lock 1ms linear both;
-      animation-timeline: --method-scene;
-      animation-range: entry 12% cover 30%;
-    }
-
-    .approach-section::after {
-      transform-origin: center;
-      animation: scene-orbit-cast 1ms linear both;
-      animation-timeline: --method-scene;
-      animation-range: entry 5% cover 45%;
-    }
-
-    .phase-list .phase-number {
-      animation: scene-number-stamp 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 6% cover 30%;
-    }
-
-    .phase-list {
-      position: relative;
-    }
-
-    .phase-list::before {
-      position: absolute;
-      z-index: 2;
-      top: 0;
-      bottom: 0;
-      left: 1.05rem;
-      width: 2px;
-      background: linear-gradient(var(--signal), var(--accent));
-      content: "";
-      pointer-events: none;
-      scale: 1 0;
-      transform-origin: top;
-      animation: scene-rail-block 1ms linear both;
-      animation-timeline: --method-scene;
-      animation-range: entry 8% cover 62%;
-    }
-
-    .phase-list li::after {
-      position: absolute;
-      z-index: 2;
-      top: 50%;
-      left: 0;
-      width: 2.15rem;
-      height: 2px;
-      background: var(--signal);
-      content: "";
-      pointer-events: none;
-      scale: 0 1;
-      transform-origin: left;
-      animation: scene-rail-inline 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 16% cover 38%;
-    }
-
-    /* The delivery blueprint compresses into register, then its cells assemble. */
-    .work-section .section-label {
-      animation: scene-number-stamp 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 32%;
-    }
-
-    .work-section .section-intro h2 {
-      animation: scene-panel-lock 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 34%;
-    }
-
-    .work-section .section-intro > div > p {
-      animation: scene-copy-thread 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 38%;
-    }
-
-    .blueprint {
-      animation: scene-panel-lock 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 3% cover 38%;
-    }
-
-    .done-panel {
-      animation: scene-panel-drive 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 8% cover 44%;
-    }
-
-    .done-panel dl > div {
-      animation: scene-detail-lock 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 30%;
-    }
-
-    /* Contact arrives behind an orange curtain as both columns converge. */
-    .contact-section {
-      view-timeline-name: --contact-scene;
-      view-timeline-axis: block;
-    }
-
-    .contact-section::after {
-      position: absolute;
-      z-index: 0;
-      inset: 0;
-      background: var(--accent);
-      content: "";
-      pointer-events: none;
-      animation: scene-curtain-clear 1ms linear both;
-      animation-timeline: --contact-scene;
-      animation-range: entry 0% cover 42%;
-    }
-
-    .contact-section::before {
-      transform-origin: center;
-      animation: scene-orbit-cast 1ms linear both;
-      animation-timeline: --contact-scene;
-      animation-range: entry 8% cover 48%;
-    }
-
-    .contact-layout {
-      z-index: 1;
-    }
-
-    .contact-copy {
-      animation: scene-slam-in 1ms linear both;
-      animation-timeline: --contact-scene;
-      animation-range: entry 5% cover 38%;
-    }
-
-    .brief-panel {
-      transform-origin: right center;
-      animation: scene-panel-drive 1ms linear both;
-      animation-timeline: --contact-scene;
-      animation-range: entry 12% cover 48%;
-    }
-
-    .brief-panel ol li {
-      animation: scene-detail-lock 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 32%;
-    }
-
-    .brief-note {
-      animation: scene-slam-in-reverse 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 28%;
-    }
-
-    /* Footer links cascade down while the base rule cuts across. */
-    .site-footer {
-      view-timeline-name: --footer-scene;
-      view-timeline-axis: block;
-    }
-
-    .footer-brand {
-      animation: scene-slam-in 1ms linear both;
-      animation-timeline: --footer-scene;
-      animation-range: entry 0% entry 55%;
-    }
-
-    .footer-main nav a {
-      animation: footer-link-cascade 1ms linear both;
-      animation-timeline: --footer-scene;
-    }
-
-    .footer-main nav a:nth-child(1) {
-      animation-range: entry 10% entry 55%;
-    }
-
-    .footer-main nav a:nth-child(2) {
-      animation-range: entry 18% entry 64%;
-    }
-
-    .footer-main nav a:nth-child(3) {
-      animation-range: entry 26% entry 73%;
-    }
-
-    .footer-main nav a:nth-child(4) {
-      animation-range: entry 34% entry 82%;
-    }
-
-    .footer-main nav a:nth-child(5) {
-      animation-range: entry 42% entry 91%;
-    }
-
-    .footer-base {
-      position: relative;
-      border-top-color: transparent;
-      animation: scene-detail-lock 1ms linear both;
-      animation-timeline: --footer-scene;
-      animation-range: entry 52% entry 100%;
-    }
-
-    .footer-base::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      height: 1px;
-      background: linear-gradient(90deg, var(--accent), var(--signal), var(--line-dark));
-      content: "";
-      scale: 0 1;
-      transform-origin: left;
-      animation: scene-rail-inline 1ms linear both;
-      animation-timeline: --footer-scene;
-      animation-range: entry 38% entry 96%;
-    }
-
-    .confidence-ticker:focus-within,
-    .service-row:focus-within,
-    .fit-note:focus-within,
-    .growth-offer:focus-within,
-    .contact-copy:focus-within,
-    .footer-brand:focus,
-    .footer-base:focus-within,
-    .footer-main nav a:focus {
-      opacity: 1 !important;
-      clip-path: none !important;
-      translate: none !important;
-      rotate: none !important;
-      scale: none !important;
-      transform: none !important;
-      animation: none !important;
-      animation-timeline: none !important;
-    }
+/*
+ * One-shot section choreography.
+ *
+ * RevealController marks each scene when it first enters the viewport. The
+ * animation then runs on its own clock and keeps its final state; scroll
+ * position never scrubs or reverses it.
+ */
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.reveal-ready .reveal-once {
+    --reveal-play-state: paused;
   }
 
-  @media (min-width: 561px) and (prefers-reduced-motion: no-preference) {
-    .growth-path {
-      view-timeline-name: --growth-path;
-      view-timeline-axis: block;
-    }
-
-    .growth-path ol {
-      position: relative;
-    }
-
-    .growth-path ol::after {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 3px;
-      background: var(--offer-signal);
-      content: "";
-      transform-origin: left;
-      animation: growth-path-draw 1ms linear both;
-      animation-timeline: --growth-path;
-      animation-range: entry 20% cover 52%;
-    }
-
-    .growth-path li {
-      animation: growth-stage-assemble 1ms linear both;
-      animation-timeline: --growth-path;
-    }
-
-    .growth-path li:nth-child(1) {
-      animation-range: entry 18% cover 28%;
-    }
-
-    .growth-path li:nth-child(2) {
-      animation-range: entry 25% cover 35%;
-    }
-
-    .growth-path li:nth-child(3) {
-      animation-range: entry 32% cover 42%;
-    }
-
-    .growth-path li:nth-child(4) {
-      animation-range: entry 39% cover 49%;
-    }
+  html.reveal-ready .reveal-once.is-revealed {
+    --reveal-play-state: running;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .phase-list > li {
-      animation: method-phase-resolve 1ms linear both;
-      animation-timeline: view();
-      animation-range: entry 15% cover 35%;
-    }
+  /* The service ticker strikes in after the pinned opening releases. */
+  html.reveal-ready .confidence-layout.reveal-once > p {
+    animation: scene-label-strike 540ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
   }
 
-  @media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
-    .blueprint {
-      view-timeline-name: --delivery-build;
-      view-timeline-axis: block;
-    }
+  html.reveal-ready .confidence-layout.reveal-once .confidence-ticker {
+    animation: scene-detail-lock 760ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
 
-    .workflow li {
-      animation: workflow-assemble 1ms linear both;
-      animation-timeline: --delivery-build;
-    }
+  /* Section labels and supporting copy move independently of the word build. */
+  html.reveal-ready .section-intro.reveal-once .section-label {
+    animation: scene-label-strike 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
 
-    .workflow li:nth-child(1) {
-      animation-range: entry 10% cover 22%;
-    }
+  html.reveal-ready .section-intro.reveal-once > div > p {
+    animation: scene-copy-thread 760ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
 
-    .workflow li:nth-child(2) {
-      animation-range: entry 18% cover 30%;
-    }
+  /*
+   * Kinetic type is staggered by word, but the heading keeps normal inline
+   * text and wrapping. Transform-only motion avoids changing line breaks.
+   */
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word > span {
+    animation: kinetic-word-lift 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
 
-    .workflow li:nth-child(3) {
-      animation-range: entry 26% cover 38%;
-    }
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(3n + 2) > span {
+    animation-name: kinetic-word-drop;
+  }
 
-    .workflow li:nth-child(4) {
-      animation-range: entry 34% cover 46%;
-    }
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(3n) > span {
+    animation-name: kinetic-word-shear;
+  }
 
-    .workflow li:nth-child(5) {
-      animation-range: entry 42% cover 54%;
-    }
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(2) > span {
+    animation-delay: 55ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(3) > span {
+    animation-delay: 110ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(4) > span {
+    animation-delay: 165ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(5) > span {
+    animation-delay: 220ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(6) > span {
+    animation-delay: 275ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(7) > span {
+    animation-delay: 330ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(8) > span {
+    animation-delay: 385ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(9) > span {
+    animation-delay: 440ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(10) > span {
+    animation-delay: 495ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(11) > span {
+    animation-delay: 550ms;
+  }
+
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word:nth-child(12) > span {
+    animation-delay: 605ms;
+  }
+
+  /* Expertise rows slam in from alternating sides and draw their top rails. */
+  html.reveal-ready .service-row.reveal-once {
+    animation: scene-slam-in 820ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .service-row.reveal-once:nth-child(even) {
+    animation-name: scene-slam-in-reverse;
+  }
+
+  html.reveal-ready .service-row.reveal-once::after {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--signal));
+    content: "";
+    pointer-events: none;
+    scale: 0 1;
+    transform-origin: left;
+    animation: scene-rail-inline 640ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .service-row.reveal-once:nth-child(even)::after {
+    transform-origin: right;
+  }
+
+  html.reveal-ready .service-row.reveal-once .service-number {
+    animation: scene-number-stamp 620ms cubic-bezier(0.34, 1.56, 0.64, 1) 90ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .service-row.reveal-once .service-heading {
+    animation: scene-title-forge 720ms cubic-bezier(0.16, 1, 0.3, 1) 130ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .service-row.reveal-once .service-detail {
+    animation: scene-detail-lock 720ms cubic-bezier(0.16, 1, 0.3, 1) 220ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .fit-note.reveal-once {
+    animation: scene-slam-in 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  /* Website and outreach cards fold toward one another in 3D. */
+  .growth-grid {
+    perspective: 1600px;
+  }
+
+  .growth-offer {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  html.reveal-ready .growth-offer-web.reveal-once {
+    transform-origin: right center;
+    animation: growth-card-left 920ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .growth-offer-outreach.reveal-once {
+    transform-origin: left center;
+    animation: growth-card-right 920ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .growth-offer.reveal-once h3 {
+    animation: scene-title-forge 760ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .growth-offer.reveal-once .growth-offer-use {
+    animation: scene-copy-thread 720ms cubic-bezier(0.16, 1, 0.3, 1) 190ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .growth-offer.reveal-once .growth-offer-description {
+    animation: scene-detail-lock 720ms cubic-bezier(0.16, 1, 0.3, 1) 260ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .growth-path.reveal-once ol {
+    position: relative;
+  }
+
+  html.reveal-ready .growth-path.reveal-once ol::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--offer-signal);
+    content: "";
+    transform-origin: left;
+    animation: growth-path-draw 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .growth-path.reveal-once li {
+    animation: growth-stage-assemble 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .growth-path.reveal-once li:nth-child(2) {
+    animation-delay: 90ms;
+  }
+
+  html.reveal-ready .growth-path.reveal-once li:nth-child(3) {
+    animation-delay: 180ms;
+  }
+
+  html.reveal-ready .growth-path.reveal-once li:nth-child(4) {
+    animation-delay: 270ms;
+  }
+
+  html.reveal-ready .growth-deliverables.reveal-once {
+    animation: scene-detail-lock 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  /* The Method thesis forges once; its phases then resolve individually. */
+  html.reveal-ready .approach-section.reveal-once::after {
+    transform-origin: center;
+    animation: scene-orbit-cast 1100ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .approach-thesis.reveal-once .section-label {
+    animation: scene-label-strike 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .approach-thesis.reveal-once > p {
+    animation: scene-copy-thread 760ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .approach-thesis.reveal-once .method-standard {
+    animation: scene-panel-lock 820ms cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .phase-list.reveal-once {
+    position: relative;
+  }
+
+  html.reveal-ready .phase-list.reveal-once::before {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 1.05rem;
+    width: 2px;
+    background: linear-gradient(var(--signal), var(--accent));
+    content: "";
+    pointer-events: none;
+    scale: 1 0;
+    transform-origin: top;
+    animation: scene-rail-block 1200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .phase-list > li.reveal-once {
+    animation: method-phase-resolve 820ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .phase-list > li.reveal-once::after {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 0;
+    width: 2.15rem;
+    height: 2px;
+    background: var(--signal);
+    content: "";
+    pointer-events: none;
+    scale: 0 1;
+    transform-origin: left;
+    animation: scene-rail-inline 560ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .phase-list > li.reveal-once .phase-number {
+    animation: scene-number-stamp 620ms cubic-bezier(0.34, 1.56, 0.64, 1) 80ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  /* Delivery panels lock into register before their internal pieces assemble. */
+  html.reveal-ready .blueprint.reveal-once {
+    animation: scene-panel-lock 880ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .done-panel.reveal-once {
+    animation: scene-panel-drive 920ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .done-panel.reveal-once dl > div {
+    animation: scene-detail-lock 620ms cubic-bezier(0.16, 1, 0.3, 1) 260ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .done-panel.reveal-once dl > div:nth-child(2) {
+    animation-delay: 340ms;
+  }
+
+  html.reveal-ready .done-panel.reveal-once dl > div:nth-child(3) {
+    animation-delay: 420ms;
+  }
+
+  html.reveal-ready .done-panel.reveal-once dl > div:nth-child(4) {
+    animation-delay: 500ms;
+  }
+
+  /* Contact clears its desktop curtain while both columns converge. */
+  html.reveal-ready .contact-section.reveal-once::after {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: var(--accent);
+    content: "";
+    pointer-events: none;
+    animation: scene-curtain-clear 1050ms cubic-bezier(0.76, 0, 0.24, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .contact-section.reveal-once::before {
+    transform-origin: center;
+    animation: scene-orbit-cast 1100ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .contact-section.reveal-once .contact-layout {
+    z-index: 1;
+  }
+
+  html.reveal-ready .contact-copy.reveal-once {
+    animation: scene-slam-in 880ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .brief-panel.reveal-once {
+    transform-origin: right center;
+    animation: scene-panel-drive 940ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .brief-panel.reveal-once ol li {
+    animation: scene-detail-lock 620ms cubic-bezier(0.16, 1, 0.3, 1) 320ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .brief-panel.reveal-once ol li:nth-child(2) {
+    animation-delay: 410ms;
+  }
+
+  html.reveal-ready .brief-panel.reveal-once ol li:nth-child(3) {
+    animation-delay: 500ms;
+  }
+
+  html.reveal-ready .brief-panel.reveal-once .brief-note {
+    animation: scene-slam-in-reverse 680ms cubic-bezier(0.16, 1, 0.3, 1) 560ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  /* Footer links cascade in while the base rule cuts across. */
+  html.reveal-ready .site-footer.reveal-once .footer-brand {
+    animation: scene-slam-in 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .site-footer.reveal-once .footer-main nav a {
+    animation: footer-link-cascade 620ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .site-footer.reveal-once .footer-main nav a:nth-child(2) {
+    animation-delay: 170ms;
+  }
+
+  html.reveal-ready .site-footer.reveal-once .footer-main nav a:nth-child(3) {
+    animation-delay: 240ms;
+  }
+
+  html.reveal-ready .site-footer.reveal-once .footer-main nav a:nth-child(4) {
+    animation-delay: 310ms;
+  }
+
+  html.reveal-ready .site-footer.reveal-once .footer-main nav a:nth-child(5) {
+    animation-delay: 380ms;
+  }
+
+  html.reveal-ready .site-footer.reveal-once .footer-base {
+    position: relative;
+    border-top-color: transparent;
+    animation: scene-detail-lock 720ms cubic-bezier(0.16, 1, 0.3, 1) 420ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .site-footer.reveal-once .footer-base::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), var(--signal), var(--line-dark));
+    content: "";
+    scale: 0 1;
+    transform-origin: left;
+    animation: scene-rail-inline 760ms cubic-bezier(0.16, 1, 0.3, 1) 360ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+}
+
+@media screen and (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+  html.reveal-ready .blueprint.reveal-once .workflow li {
+    animation: workflow-assemble 700ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
+    animation-play-state: var(--reveal-play-state);
+  }
+
+  html.reveal-ready .blueprint.reveal-once .workflow li:nth-child(2) {
+    animation-delay: 330ms;
+  }
+
+  html.reveal-ready .blueprint.reveal-once .workflow li:nth-child(3) {
+    animation-delay: 420ms;
+  }
+
+  html.reveal-ready .blueprint.reveal-once .workflow li:nth-child(4) {
+    animation-delay: 510ms;
+  }
+
+  html.reveal-ready .blueprint.reveal-once .workflow li:nth-child(5) {
+    animation-delay: 600ms;
+  }
+}
+
+@media screen and (max-width: 560px) and (prefers-reduced-motion: no-preference) {
+  html.reveal-ready .kinetic-heading.reveal-once .kinetic-word > span {
+    animation: none;
   }
 }
 
@@ -2962,6 +2972,11 @@ select {
       url("/images/blacksmith-forge-hero-faceless.jpg");
     background-position: center, 64% center;
     background-size: 100% 100%, cover;
+  }
+
+  html.reveal-ready .contact-section.reveal-once::after {
+    animation: none;
+    content: none;
   }
 
   .approach-thesis {
@@ -3270,7 +3285,6 @@ select {
     clip-path: none !important;
     translate: none !important;
     animation: none !important;
-    animation-timeline: none !important;
   }
 
   .button-icon,
