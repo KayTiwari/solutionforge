@@ -6,16 +6,19 @@ type SlowScrollLinkProps = {
   children: ReactNode;
   className?: string;
   href: `#${string}`;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 };
 
 const scrollDuration = 1150;
 const headerOffset = 76;
 
-export default function SlowScrollLink({ children, className, href }: SlowScrollLinkProps) {
+export default function SlowScrollLink({ children, className, href, onClick }: SlowScrollLinkProps) {
   const animationFrame = useRef<number | null>(null);
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    onClick?.(event);
+
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
       return;
     }
 

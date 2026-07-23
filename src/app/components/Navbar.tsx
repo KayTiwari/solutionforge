@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import LogoMark from "./LogoMark";
+import SlowScrollLink from "./SlowScrollLink";
 
 const navLinks = [
   { label: "Expertise", href: "#services" },
@@ -43,7 +44,9 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a className="nav-cta" href="#contact">Discuss a project <span className="link-icon" aria-hidden="true">↗</span></a>
+        <SlowScrollLink className="nav-cta" href="#contact">
+          Discuss a project <span className="link-icon" aria-hidden="true">↗</span>
+        </SlowScrollLink>
 
         <button
           className="menu-button"
@@ -69,7 +72,9 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</a>
           ))}
-          <a href="#contact" onClick={() => setMenuOpen(false)}>Discuss a project <span className="link-icon" aria-hidden="true">↗</span></a>
+          <SlowScrollLink href="#contact" onClick={() => setMenuOpen(false)}>
+            Discuss a project <span className="link-icon" aria-hidden="true">↗</span>
+          </SlowScrollLink>
         </div>
       </nav>
     </header>

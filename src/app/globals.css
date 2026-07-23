@@ -646,28 +646,120 @@ select {
   transform: rotate(-1.5deg);
 }
 
+.hero-word-embers {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
 .hero-word-ember {
   position: absolute;
-  top: 0.02em;
-  right: -0.12em;
-  width: 0.105em;
-  height: 0.105em;
-  background: var(--signal);
-  box-shadow: 0 0 0.18em rgba(188, 236, 117, 0.5);
-  animation: hero-ember-lift 2.8s ease-out infinite;
+  bottom: 0.75em;
+  left: var(--ember-left);
+  width: var(--ember-size);
+  height: var(--ember-size);
+  background: currentColor;
+  box-shadow: 0 0 0.16em currentColor;
+  color: var(--ember-color);
+  opacity: 0;
+  animation: hero-ember-lift var(--ember-duration) ease-out infinite;
+  animation-delay: var(--ember-delay);
+  will-change: opacity, transform;
+}
+
+.hero-word-ember:nth-child(1) {
+  --ember-left: 7%;
+  --ember-size: 0.065em;
+  --ember-color: #ff5a36;
+  --ember-drift: -0.14em;
+  --ember-rise: -0.42em;
+  --ember-spin: -80deg;
+  --ember-duration: 2.6s;
+  --ember-delay: -0.2s;
+}
+
+.hero-word-ember:nth-child(2) {
+  --ember-left: 22%;
+  --ember-size: 0.045em;
+  --ember-color: #ffb15f;
+  --ember-drift: 0.1em;
+  --ember-rise: -0.58em;
+  --ember-spin: 110deg;
+  --ember-duration: 3.1s;
+  --ember-delay: -1.5s;
+}
+
+.hero-word-ember:nth-child(3) {
+  --ember-left: 39%;
+  --ember-size: 0.08em;
+  --ember-color: #ff7655;
+  --ember-drift: -0.05em;
+  --ember-rise: -0.66em;
+  --ember-spin: -95deg;
+  --ember-duration: 2.8s;
+  --ember-delay: -2.2s;
+}
+
+.hero-word-ember:nth-child(4) {
+  --ember-left: 55%;
+  --ember-size: 0.04em;
+  --ember-color: #fff3c4;
+  --ember-drift: 0.16em;
+  --ember-rise: -0.48em;
+  --ember-spin: 135deg;
+  --ember-duration: 3.4s;
+  --ember-delay: -0.8s;
+}
+
+.hero-word-ember:nth-child(5) {
+  --ember-left: 70%;
+  --ember-size: 0.06em;
+  --ember-color: #ffb15f;
+  --ember-drift: -0.16em;
+  --ember-rise: -0.74em;
+  --ember-spin: -120deg;
+  --ember-duration: 2.9s;
+  --ember-delay: -1.9s;
+}
+
+.hero-word-ember:nth-child(6) {
+  --ember-left: 85%;
+  --ember-size: 0.072em;
+  --ember-color: var(--signal);
+  --ember-drift: 0.2em;
+  --ember-rise: -0.56em;
+  --ember-spin: 90deg;
+  --ember-duration: 3.2s;
+  --ember-delay: -2.7s;
+}
+
+.hero-word-ember:nth-child(7) {
+  --ember-left: 97%;
+  --ember-size: 0.04em;
+  --ember-color: #ff5a36;
+  --ember-drift: 0.07em;
+  --ember-rise: -0.84em;
+  --ember-spin: 145deg;
+  --ember-duration: 3.6s;
+  --ember-delay: -1.3s;
 }
 
 @keyframes hero-ember-lift {
-  0%, 54%, 100% {
+  0%, 38%, 100% {
     opacity: 0;
-    transform: translate(0, 0.22em) scale(0.55) rotate(0deg);
+    transform: translate(0, 0.14em) scale(0.35) rotate(0deg);
   }
-  64% {
+  48% {
     opacity: 1;
+  }
+  76% {
+    opacity: 0.82;
   }
   88% {
     opacity: 0;
-    transform: translate(0.2em, -0.42em) scale(0.95) rotate(90deg);
+    transform: translate(var(--ember-drift), var(--ember-rise)) scale(1) rotate(var(--ember-spin));
   }
 }
 
@@ -1331,9 +1423,9 @@ select {
   overflow: hidden;
   background-color: var(--accent);
   background-image:
-    linear-gradient(90deg, rgba(7, 12, 11, 0.76) 0%, rgba(7, 12, 11, 0.5) 38%, rgba(255, 90, 54, 0.84) 64%, rgba(255, 90, 54, 0.98) 100%),
+    linear-gradient(270deg, rgba(255, 90, 54, 0.96) 0%, rgba(255, 90, 54, 0.88) 46%, rgba(17, 26, 24, 0.48) 100%),
     url("/images/blacksmith-forge-hero-faceless.jpg");
-  background-position: left center;
+  background-position: center center;
   background-size: cover;
   color: var(--ink);
 }
