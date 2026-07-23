@@ -13,6 +13,9 @@ const INNER_FLAME =
 type FlameMotion = {
   anchorX: number;
   anchorY: number;
+  offsetX: number;
+  offsetY: number;
+  rotation: number;
   shear: number;
   scaleX: number;
   scaleY: number;
@@ -25,7 +28,11 @@ function drawMovingPath(
   motion: FlameMotion,
 ) {
   ctx.save();
-  ctx.translate(motion.anchorX, motion.anchorY);
+  ctx.translate(
+    motion.anchorX + motion.offsetX,
+    motion.anchorY + motion.offsetY,
+  );
+  ctx.rotate(motion.rotation);
   ctx.transform(1, 0, motion.shear, 1, 0, 0);
   ctx.scale(motion.scaleX, motion.scaleY);
   ctx.translate(-motion.anchorX, -motion.anchorY);
@@ -105,45 +112,63 @@ export function AnimatedFavicon() {
       ctx.stroke();
 
       const outerPulse =
-        Math.sin(seconds * 4.7) * 0.72 + Math.sin(seconds * 9.1 + 0.7) * 0.28;
+        Math.sin(seconds * 7.1) * 0.65 +
+        Math.sin(seconds * 11.3 + 0.7) * 0.35;
       const outerSway =
-        Math.sin(seconds * 3.9) * 0.038 + Math.sin(seconds * 7.3 + 1.1) * 0.017;
+        Math.sin(seconds * 5.4) * 0.58 +
+        Math.sin(seconds * 8.7 + 0.8) * 0.27 +
+        Math.sin(seconds * 2.1 + 0.2) * 0.15;
 
       drawMovingPath(ctx, outerFlame, "#ff5a36", {
         anchorX: 31,
         anchorY: 55,
-        shear: outerSway,
-        scaleX: 1 - outerPulse * 0.035,
-        scaleY: 1 + outerPulse * 0.06,
+        offsetX: outerSway * 3.2,
+        offsetY: Math.sin(seconds * 8.3 + 0.4) * 1.2,
+        rotation: outerSway * 0.14,
+        shear: outerSway * 0.11,
+        scaleX: 1 - outerPulse * 0.1,
+        scaleY: 1 + outerPulse * 0.17,
       });
 
       const corePulse =
-        Math.sin(seconds * 5.8 + 0.8) * 0.7 + Math.sin(seconds * 10.7) * 0.3;
+        Math.sin(seconds * 8.2 + 0.8) * 0.7 +
+        Math.sin(seconds * 13.1) * 0.3;
       const coreSway =
-        Math.sin(seconds * 4.8 + 1.2) * 0.048 + Math.sin(seconds * 8.6) * 0.015;
+        Math.sin(seconds * 6.1 + 1.2) * 0.7 +
+        Math.sin(seconds * 10.2) * 0.3;
 
       ctx.save();
-      ctx.globalAlpha = 0.9 + Math.sin(seconds * 7.4) * 0.1;
+      ctx.globalAlpha = 0.84 + Math.sin(seconds * 9.4) * 0.16;
       drawMovingPath(ctx, coreFlame, "#ffb15f", {
         anchorX: 29,
         anchorY: 55,
-        shear: coreSway,
-        scaleX: 1 - corePulse * 0.04,
-        scaleY: 1 + corePulse * 0.07,
+        offsetX: coreSway * 2.4,
+        offsetY: Math.sin(seconds * 10.4 + 0.9) * 1.1,
+        rotation: coreSway * 0.11,
+        shear: coreSway * 0.12,
+        scaleX: 1 - corePulse * 0.11,
+        scaleY: 1 + corePulse * 0.18,
       });
       ctx.restore();
 
-      const innerPulse = Math.sin(seconds * 7.2 + 2.1);
+      const innerPulse = Math.sin(seconds * 10.2 + 2.1);
+      const innerSway =
+        Math.sin(seconds * 7.4 + 2.4) * 0.72 +
+        Math.sin(seconds * 12.6 + 0.4) * 0.28;
+
       drawMovingPath(ctx, innerFlame, "#fff3c4", {
         anchorX: 29,
         anchorY: 55,
-        shear: Math.sin(seconds * 5.6 + 2.4) * 0.055,
-        scaleX: 1 - innerPulse * 0.045,
-        scaleY: 1 + innerPulse * 0.075,
+        offsetX: innerSway * 1.6,
+        offsetY: Math.sin(seconds * 12.1 + 1.1) * 1,
+        rotation: innerSway * 0.09,
+        shear: innerSway * 0.1,
+        scaleX: 1 - innerPulse * 0.13,
+        scaleY: 1 + innerPulse * 0.2,
       });
 
-      drawEmber(ctx, seconds, 0.05, 44, 28, "#bcec75", 3.5);
-      drawEmber(ctx, seconds, 0.53, 19, 31, "#ffb15f", 3);
+      drawEmber(ctx, seconds, 0.05, 44, 28, "#bcec75", 4.5);
+      drawEmber(ctx, seconds, 0.53, 19, 31, "#ffb15f", 4);
     };
 
     let elapsed = 0;
