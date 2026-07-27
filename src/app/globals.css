@@ -575,11 +575,6 @@ select {
 
 /* Hero */
 
-.hero-pin-stage {
-  position: relative;
-  background: var(--dark);
-}
-
 .hero {
   position: relative;
   overflow: hidden;
@@ -1977,7 +1972,7 @@ select {
   }
 }
 
-/* Scroll-driven scenes: progressive enhancement */
+/* Viewport-triggered, one-shot scenes */
 
 @keyframes growth-path-draw {
   from {
@@ -2765,41 +2760,6 @@ select {
 @media screen and (max-width: 560px) and (prefers-reduced-motion: no-preference) {
   html.reveal-ready .kinetic-heading.reveal-once .kinetic-word > span {
     animation: none;
-  }
-}
-
-/*
- * Give the opening scene a short scroll runway on larger screens. The hero
- * stays pinned while that runway is consumed, then releases with the document.
- * Small screens and reduced-motion users keep the direct scrolling layout.
- */
-@media screen
-  and (min-width: 1021px)
-  and (min-height: 800px)
-  and (hover: hover)
-  and (pointer: fine)
-  and (prefers-reduced-motion: no-preference) {
-  .hero-pin-stage {
-    --hero-hold: clamp(10rem, 22svh, 15rem);
-    block-size: calc(100svh + var(--hero-hold));
-  }
-
-  .hero-pin-stage > .hero {
-    position: sticky;
-    z-index: 0;
-    inset-block-start: 0;
-    block-size: 100svh;
-    min-block-size: 0;
-  }
-
-  .hero-pin-stage .hero-layout {
-    block-size: 100%;
-    min-block-size: 0;
-  }
-
-  .confidence-bar {
-    position: relative;
-    z-index: 1;
   }
 }
 
