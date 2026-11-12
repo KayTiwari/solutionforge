@@ -27,7 +27,7 @@ export default function Footer() {
       </div>
       <div className="shell footer-base">
         <p>&copy; {new Date().getFullYear()} SolutionForge</p>
-        <a href="mailto:hello@solutionforge.dev">hello@solutionforge.dev</a>
+        <a href="mailto:info@solutionforge.dev">info@solutionforge.dev</a>
       </div>
     </footer>
   );

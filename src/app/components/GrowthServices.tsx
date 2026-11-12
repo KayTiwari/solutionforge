@@ -26,7 +26,7 @@ const offers = [
       "Launch + handoff",
     ],
     cta: "Talk about your website",
-    href: "mailto:hello@solutionforge.dev?subject=Website%20project&body=Project%20type%3A%20Website%0A%0ACurrent%20situation%3A%0A%0AWhat%20needs%20to%20be%20true%20at%20launch%3A%0A",
+    href: "mailto:info@solutionforge.dev?subject=Website%20project&body=Project%20type%3A%20Website%0A%0ACurrent%20situation%3A%0A%0AWhat%20needs%20to%20be%20true%20at%20launch%3A%0A",
   },
   {
     className: "growth-offer-outreach",
@@ -50,7 +50,7 @@ const offers = [
       "Tracking + handoff",
     ],
     cta: "Talk about outreach",
-    href: "mailto:hello@solutionforge.dev?subject=Business%20outreach%20project&body=Project%20type%3A%20Business%20outreach%0A%0AAudience%20and%20offer%3A%0A%0ACurrent%20outreach%20process%3A%0A",
+    href: "mailto:info@solutionforge.dev?subject=Business%20outreach%20project&body=Project%20type%3A%20Business%20outreach%0A%0AAudience%20and%20offer%3A%0A%0ACurrent%20outreach%20process%3A%0A",
   },
 ];
 
